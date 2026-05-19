@@ -1,0 +1,37 @@
+---
+id: RHE.ILL.067
+trope_type: metaphor
+source_text: |
+  |
+structural_core: "Управление множеством ИИ-агентов переносится на образ оркестра, где дирижёр координирует отдельные инструменты для создания гармонии"
+illustrates:
+  - concept_id: TBD
+    concept_description: "Эволюция роли DevOps: от управления инфраструктурой к координации множества ИИ-агентов"
+    pack_ref: PACK-personal
+source_domain: "музыка (оркестр, дирижер)"
+audience_level: 3
+effect: explain
+canonical: true
+breaks_when: "когда агенты работают полностью независимо, без единого управления; когда нет центральной координации"
+origin_source: "club/t/39165/p/65267"
+quality_score: 0.82
+status: active
+created: 2026-05-19
+---
+
+# [RHE.ILL.067] Эволюция роли DevOps: от управления инфраструктурой к координации множества ИИ-агентов
+
+## Source
+
+|
+
+## Structural Core
+
+Управление множеством ИИ-агентов переносится на образ оркестра, где дирижёр координирует отдельные инструменты для создания гармонии
+
+## Boundaries (breaks_when)
+
+когда агенты работают полностью независимо, без единого управления; когда нет центральной координации
+
+---
+*Extraction: M-RM corpus mining. concept_id TBD — requires manual binding to PACK-personal.*

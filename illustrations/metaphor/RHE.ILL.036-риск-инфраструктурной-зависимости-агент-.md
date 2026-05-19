@@ -1,0 +1,37 @@
+---
+id: RHE.ILL.036
+trope_type: metaphor
+source_text: |
+  |
+structural_core: "Привязанность к конкретной инфраструктуре переносится как физическое крепление гвоздями, препятствующее мобильности"
+illustrates:
+  - concept_id: TBD
+    concept_description: "Риск инфраструктурной зависимости: агент становится неотделим от конкретного места/системы"
+    pack_ref: PACK-personal
+source_domain: "механика, строительство"
+audience_level: 3
+effect: persuade
+canonical: true
+breaks_when: "Когда инфраструктура полностью портативна, контейнеризирована или облачна и может быть развёрнута везде"
+origin_source: "club/t/39170/p/65306"
+quality_score: 0.95
+status: active
+created: 2026-05-19
+---
+
+# [RHE.ILL.036] Риск инфраструктурной зависимости: агент становится неотделим от конкретного места/системы
+
+## Source
+
+|
+
+## Structural Core
+
+Привязанность к конкретной инфраструктуре переносится как физическое крепление гвоздями, препятствующее мобильности
+
+## Boundaries (breaks_when)
+
+Когда инфраструктура полностью портативна, контейнеризирована или облачна и может быть развёрнута везде
+
+---
+*Extraction: M-RM corpus mining. concept_id TBD — requires manual binding to PACK-personal.*

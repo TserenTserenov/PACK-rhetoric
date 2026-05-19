@@ -1,0 +1,37 @@
+---
+id: RHE.ILL.036
+trope_type: metaphor
+source_text: |
+  |
+structural_core: "цифровые инструменты переносят образ внешнего органа/приспособления на абстрактное усиление интеллектуальных функций человека"
+illustrates:
+  - concept_id: TBD
+    concept_description: "экзокортекс как протез для мышления — не замена, а расширение существующих способностей"
+    pack_ref: PACK-personal
+source_domain: "биомеханика, когнитивная наука"
+audience_level: 2
+effect: explain
+canonical: true
+breaks_when: "когда инструмент не обеспечивает надёжное хранение или структурирование; когда он заменяет мышление вместо расширения"
+origin_source: "club/t/39196/p/65307"
+quality_score: 0.82
+status: active
+created: 2026-05-19
+---
+
+# [RHE.ILL.036] экзокортекс как протез для мышления — не замена, а расширение существующих способностей
+
+## Source
+
+|
+
+## Structural Core
+
+цифровые инструменты переносят образ внешнего органа/приспособления на абстрактное усиление интеллектуальных функций человека
+
+## Boundaries (breaks_when)
+
+когда инструмент не обеспечивает надёжное хранение или структурирование; когда он заменяет мышление вместо расширения
+
+---
+*Extraction: M-RM corpus mining. concept_id TBD — requires manual binding to PACK-personal.*

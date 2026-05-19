@@ -1,0 +1,37 @@
+---
+id: RHE.ILL.054
+trope_type: counter_example
+source_text: |
+  |
+structural_core: "Fails because [система разделена на компоненты] → [ни один компонент отдельно (человек или инструменты) не является сверхчеловеком]"
+illustrates:
+  - concept_id: TBD
+    concept_description: "целостность связки (человек-система) критична; части отдельно не достаточны для преодоления человеческих ограничений"
+    pack_ref: PACK-personal
+source_domain: "системная логика, механика"
+audience_level: 3
+effect: scaffold
+canonical: true
+breaks_when: "если компоненты системы могут функционировать независимо и достигать того же результата"
+origin_source: "club/t/39170/p/65273"
+quality_score: 0.92
+status: active
+created: 2026-05-19
+---
+
+# [RHE.ILL.054] целостность связки (человек-система) критична; части отдельно не достаточны для преодоления человеческих ограничений
+
+## Source
+
+|
+
+## Structural Core
+
+Fails because [система разделена на компоненты] → [ни один компонент отдельно (человек или инструменты) не является сверхчеловеком]
+
+## Boundaries (breaks_when)
+
+если компоненты системы могут функционировать независимо и достигать того же результата
+
+---
+*Extraction: M-RM corpus mining. concept_id TBD — requires manual binding to PACK-personal.*

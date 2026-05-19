@@ -1,0 +1,37 @@
+---
+id: RHE.ILL.045
+trope_type: counter_example
+source_text: |
+  |
+structural_core: "[Действие: делегирование] + [Условие: форс-мажор, недоступность] → [Отказ системы: беспомощность, потеря навыков]"
+illustrates:
+  - concept_id: TBD
+    concept_description: "Риск когнитивной атрофии (разучивания) при чрезмерной опоре на внешние агенты"
+    pack_ref: PACK-personal
+source_domain: "медицина (атрофия мышц), физиология (разучивание движений)"
+audience_level: 2
+effect: persuade
+canonical: false
+breaks_when: "если регулярно практиковать самостоятельное выполнение делегированных задач как страховку"
+origin_source: "club/t/39170/p/65304"
+quality_score: 0.85
+status: active
+created: 2026-05-19
+---
+
+# [RHE.ILL.045] Риск когнитивной атрофии (разучивания) при чрезмерной опоре на внешние агенты
+
+## Source
+
+|
+
+## Structural Core
+
+[Действие: делегирование] + [Условие: форс-мажор, недоступность] → [Отказ системы: беспомощность, потеря навыков]
+
+## Boundaries (breaks_when)
+
+если регулярно практиковать самостоятельное выполнение делегированных задач как страховку
+
+---
+*Extraction: M-RM corpus mining. concept_id TBD — requires manual binding to PACK-personal.*

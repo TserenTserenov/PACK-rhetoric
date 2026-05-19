@@ -1,0 +1,16 @@
+# rhetoric-miner.timer — systemd timer для tsekh-1
+# Запуск в 02:00 МСК (23:00 UTC)
+#
+# Install: см. rhetoric-miner.service
+
+[Unit]
+Description=Timer for PACK-rhetoric M-RM night miner
+Requires=rhetoric-miner.service
+
+[Timer]
+OnCalendar=*-*-* 23:00:00 UTC
+RandomizedDelaySec=300
+Persistent=true
+
+[Install]
+WantedBy=timers.target

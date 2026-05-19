@@ -1,0 +1,37 @@
+---
+id: RHE.ILL.068
+trope_type: metaphor
+source_text: |
+  |
+structural_core: "Отношение между экзокортексом и ИИ-агентом переносится на биологический симбиоз, где оба организма взаимно усиливают друг друга"
+illustrates:
+  - concept_id: TBD
+    concept_description: "Природа взаимодействия в IWE — не замещение человека ИИ, а взаимное усиление двух систем"
+    pack_ref: PACK-personal
+source_domain: "биология (симбиоз, сожительство организмов)"
+audience_level: 3
+effect: explain
+canonical: true
+breaks_when: "когда один из компонентов (человек или ИИ) работает полностью самостоятельно, без опоры и обратной связи с другим"
+origin_source: "club/t/39165/p/65267"
+quality_score: 0.78
+status: active
+created: 2026-05-19
+---
+
+# [RHE.ILL.068] Природа взаимодействия в IWE — не замещение человека ИИ, а взаимное усиление двух систем
+
+## Source
+
+|
+
+## Structural Core
+
+Отношение между экзокортексом и ИИ-агентом переносится на биологический симбиоз, где оба организма взаимно усиливают друг друга
+
+## Boundaries (breaks_when)
+
+когда один из компонентов (человек или ИИ) работает полностью самостоятельно, без опоры и обратной связи с другим
+
+---
+*Extraction: M-RM corpus mining. concept_id TBD — requires manual binding to PACK-personal.*

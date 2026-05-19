@@ -1,0 +1,37 @@
+---
+id: RHE.ILL.050
+trope_type: counter_example
+source_text: |
+  |
+structural_core: "Fails because: математическая красота не гарантирует изоморфизм с реальностью → неправильное применение выглядит как обоснование"
+illustrates:
+  - concept_id: TBD
+    concept_description: "Опасность некритичного применения красивой математики; необходимость проверки на практику (scope и применимость)"
+    pack_ref: PACK-personal
+source_domain: "философия науки, логика, история идей"
+audience_level: 3
+effect: persuade
+canonical: true
+breaks_when: "N/A (контрпример по определению показывает, когда метод НЕ работает)"
+origin_source: "club/t/39190/p/65297"
+quality_score: 0.80
+status: active
+created: 2026-05-19
+---
+
+# [RHE.ILL.050] Опасность некритичного применения красивой математики; необходимость проверки на практику (scope и применимость)
+
+## Source
+
+|
+
+## Structural Core
+
+Fails because: математическая красота не гарантирует изоморфизм с реальностью → неправильное применение выглядит как обоснование
+
+## Boundaries (breaks_when)
+
+N/A (контрпример по определению показывает, когда метод НЕ работает)
+
+---
+*Extraction: M-RM corpus mining. concept_id TBD — requires manual binding to PACK-personal.*

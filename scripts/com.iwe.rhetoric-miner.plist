@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<!--
+  com.iwe.rhetoric-miner.plist
+  Ночной майнинг иллюстраций из клуба → PACK-rhetoric (M-RM, DP.SC.149)
+
+  Install:
+    cp com.iwe.rhetoric-miner.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.iwe.rhetoric-miner.plist
+
+  Uninstall:
+    launchctl unload ~/Library/LaunchAgents/com.iwe.rhetoric-miner.plist
+
+  Manual trigger:
+    launchctl start com.iwe.rhetoric-miner
+
+  Schedule: 23:00 UTC = 02:00 MSK
+-->
+<dict>
+    <key>Label</key>
+    <string>com.iwe.rhetoric-miner</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/tserentserenov/IWE/PACK-rhetoric/scripts/rhetoric-miner.sh</string>
+    </array>
+
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>23</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/Users/tserentserenov/IWE/PACK-rhetoric/scripts/logs/launchd-stdout.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/tserentserenov/IWE/PACK-rhetoric/scripts/logs/launchd-stderr.log</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin:/Users/tserentserenov/.local/bin</string>
+        <key>HOME</key>
+        <string>/Users/tserentserenov</string>
+        <key>RHETORIC_SINCE</key>
+        <string>2026-01-01</string>
+    </dict>
+
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>KeepAlive</key>
+    <false/>
+</dict>
+</plist>

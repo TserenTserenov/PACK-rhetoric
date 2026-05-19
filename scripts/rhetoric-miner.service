@@ -1,0 +1,30 @@
+# rhetoric-miner.service — systemd unit для tsekh-1
+# see DP.SC.149, DP.AISYS.013 §4.9 (M-RM)
+#
+# Install on tsekh-1:
+#   sudo cp rhetoric-miner.service /etc/systemd/system/
+#   sudo cp rhetoric-miner.timer /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable rhetoric-miner.timer
+#   sudo systemctl start rhetoric-miner.timer
+#
+# Manual trigger:
+#   sudo systemctl start rhetoric-miner.service
+
+[Unit]
+Description=PACK-rhetoric M-RM night miner (DP.SC.149)
+After=network.target
+
+[Service]
+Type=oneshot
+User=tserentserenov
+WorkingDirectory=/home/tserentserenov/IWE/PACK-rhetoric
+ExecStart=/bin/bash /home/tserentserenov/IWE/PACK-rhetoric/scripts/rhetoric-miner.sh
+StandardOutput=append:/home/tserentserenov/IWE/PACK-rhetoric/scripts/logs/systemd-stdout.log
+StandardError=append:/home/tserentserenov/IWE/PACK-rhetoric/scripts/logs/systemd-stderr.log
+Environment="HOME=/home/tserentserenov"
+Environment="PATH=/usr/local/bin:/usr/bin:/bin:/home/tserentserenov/.local/bin"
+Environment="RHETORIC_SINCE=2026-01-01"
+
+[Install]
+WantedBy=multi-user.target

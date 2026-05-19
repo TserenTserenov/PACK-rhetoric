@@ -1,0 +1,37 @@
+---
+id: RHE.ILL.043
+trope_type: metaphor
+source_text: |
+  |
+structural_core: "Буквальное прибивание гвоздями → неподвижность в пространстве → зависимость от конкретного места и его конфигурации"
+illustrates:
+  - concept_id: TBD
+    concept_description: "Привязанность человека к инфраструктуре и невозможность портативности установленных инструментов"
+    pack_ref: PACK-personal
+source_domain: "строительство, механика (закрепление предметов)"
+audience_level: 2
+effect: explain
+canonical: false
+breaks_when: "когда инструменты облачные, независимые от места или легко перносимые"
+origin_source: "club/t/39170/p/65304"
+quality_score: 0.88
+status: active
+created: 2026-05-19
+---
+
+# [RHE.ILL.043] Привязанность человека к инфраструктуре и невозможность портативности установленных инструментов
+
+## Source
+
+|
+
+## Structural Core
+
+Буквальное прибивание гвоздями → неподвижность в пространстве → зависимость от конкретного места и его конфигурации
+
+## Boundaries (breaks_when)
+
+когда инструменты облачные, независимые от места или легко перносимые
+
+---
+*Extraction: M-RM corpus mining. concept_id TBD — requires manual binding to PACK-personal.*
