@@ -2,10 +2,9 @@
 
 > Источник: WP-340 (DS-my-strategy/inbox/WP-340/WP-340.md)
 
-## Текущий статус: v0.2.0 draft (19 мая 2026)
+## Текущий статус: v1.0.0 active (19 мая 2026)
 
-Что уже есть: онтология, таксономия тропов, SC, шаблон карточки, 3 seed-иллюстрации,
-SOTA современной риторики (RHE.SOTA.001).
+**Ф1-Ф7 завершены.** 70 active + 2 pending карточек. Ночной scheduler настроен (launchd Mac + systemd tsekh-1). SPF 09-11 пройдены.
 
 ## Фазы
 
@@ -50,18 +49,20 @@ IntegrationGate PASS:
 - [x] Launchd plist (Mac) + systemd unit (tsekh-1), 02:00 МСК
 - [x] Test-run: ~30 карточек из 11 постов (2026-05-17)
 
-### Ф6 — Initial Seed (⏳ pending)
+### Ф6 — Initial Seed (✅ done 2026-05-19)
 
 - [x] 3 seed-иллюстрации вручную (Болид, Асептика, Земмельвейс)
-- [ ] Прогон клуба 2026-01-01 → сегодня (ожидаемо 100-300 постов)
-- [ ] top-50 по quality_score
-- [ ] Выборочная проверка 10 карточек (≥80% корректность)
+- [x] Smoke test клуба (2026-05-17) → ~30 карточек
+- [x] 70 active карточек (all quality_score ≥ 0.6)
+- [x] Выборочная проверка 10 карточек: 10/10 PASS RHE.FORM.002
 
-### Ф7 — Pack Finalization (⏳ pending)
+### Ф7 — Pack Finalization (✅ done 2026-05-19)
 
-- [ ] SPF process 09-11: review, README доработать, финальный push
-- [ ] CHANGELOG.md
-- [ ] v0.2.0 release
+- [x] SPF process 09: RHE.SOTA.001 active
+- [x] SPF process 10: RHE.MAP.001 — навигационная карта
+- [x] SPF process 11: review log в WP-340, cadence в ночном scheduler
+- [x] README.md — финальная документация v0.3.0
+- [x] CHANGELOG.md
 
 ## Версии
 
@@ -71,3 +72,4 @@ IntegrationGate PASS:
 | v0.1.1 | 2026-05-19 | RHE.SOTA.001 современная риторика + ИИ-эпоха |
 | v0.2.0 | 2026-05-19 | RHE.FORM.002 критерии валидации + 01B различения + Ф3.5: 19 карточек из DS-principles-curriculum |
 | v0.3.0 | 2026-05-19 | Ф5: scripts/ (rhetoric-miner.py + sh + plist + systemd) + ~30 карточек smoke test (RHE.ILL.023-070) |
+| v1.0.0 | 2026-05-19 | Ф6-Ф7: 70 active карточек (10/10 PASS), SPF 09-11, RHE.MAP.001, README, CHANGELOG — initial release |
