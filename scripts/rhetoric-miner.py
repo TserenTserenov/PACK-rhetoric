@@ -206,11 +206,17 @@ def parse_yaml_cards(output: str) -> list[dict]:
             if ":" in line and not line.startswith(" ") and not line.startswith("-"):
                 key, _, val = line.partition(":")
                 card[key.strip()] = val.strip().strip('"').strip("'")
-        # Handle multiline source_text (simplified)
-        if "source_text" not in card:
-            m = re.search(r"source_text:\s*\|\s*\n((?:  .+\n?)+)", block)
-            if m:
-                card["source_text"] = m.group(1).replace("  ", "").strip()
+        # Handle multiline source_text — simple key: value sets source_text: "|"
+        # which is wrong; always try to extract the real block content
+        m = re.search(r"source_text:\s*\|\s*\n((?:[ \t]+.+\n?)+)", block)
+        if m:
+            lines = m.group(1).splitlines()
+            # strip common leading whitespace
+            stripped = [re.sub(r"^  ", "", l) for l in lines]
+            card["source_text"] = "\n".join(stripped).strip()
+        # Fallback: if source_text is missing or still a bare pipe, clear it
+        if card.get("source_text") in ("|", ""):
+            card["source_text"] = ""
         if card.get("id") and card.get("trope_type"):
             cards.append(card)
     return cards
