@@ -1,0 +1,37 @@
+---
+id: RHE.ILL.085
+trope_type: case
+source_text: |
+  |
+structural_core: "[Условие: отказ инфраструктуры (форсмажор)] + [Конфликт: зависимость vs автономия] → [Решение: резервная компетенция через тренировку]"
+illustrates:
+  - concept_id: TBD
+    concept_description: "Баланс между делегированием и сохранением резервного личного навыка как защита от форсмажора"
+    pack_ref: PACK-personal
+source_domain: "инженерия (redundancy, failover, backup)"
+audience_level: 4
+effect: persuade
+canonical: true
+breaks_when: "когда форсмажор полностью исключает возможность ручного выполнения"
+origin_source: "club/t/39170/p/65306"
+quality_score: 0.80
+status: active
+created: 2026-05-19
+---
+
+# [RHE.ILL.085] Баланс между делегированием и сохранением резервного личного навыка как защита от форсмажора
+
+## Source
+
+|
+
+## Structural Core
+
+[Условие: отказ инфраструктуры (форсмажор)] + [Конфликт: зависимость vs автономия] → [Решение: резервная компетенция через тренировку]
+
+## Boundaries (breaks_when)
+
+когда форсмажор полностью исключает возможность ручного выполнения
+
+---
+*Extraction: M-RM corpus mining. concept_id TBD — requires manual binding to PACK-personal.*

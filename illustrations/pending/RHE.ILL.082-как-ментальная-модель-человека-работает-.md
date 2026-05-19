@@ -1,0 +1,37 @@
+---
+id: RHE.ILL.082
+trope_type: analogy
+source_text: |
+  |
+structural_core: "[Картина визуальная] соответствует [Система убеждений/модель мира] потому что [оба дают ориентацию и целостность]"
+illustrates:
+  - concept_id: TBD
+    concept_description: "Как ментальная модель человека работает как завершённое целое, которое нужно обновлять, а не накапливать отрывки"
+    pack_ref: PACK-personal
+source_domain: "живопись, образное мышление"
+audience_level: 2
+effect: scaffold
+canonical: true
+breaks_when: "если человек просто накапливает факты без интеграции в целостный образ — метафора разрушается"
+origin_source: "club/t/39195/p/65305"
+quality_score: 0.90
+status: draft
+created: 2026-05-19
+---
+
+# [RHE.ILL.082] Как ментальная модель человека работает как завершённое целое, которое нужно обновлять, а не накапливать отрывки
+
+## Source
+
+|
+
+## Structural Core
+
+[Картина визуальная] соответствует [Система убеждений/модель мира] потому что [оба дают ориентацию и целостность]
+
+## Boundaries (breaks_when)
+
+если человек просто накапливает факты без интеграции в целостный образ — метафора разрушается
+
+---
+*Extraction: M-RM corpus mining. concept_id TBD — requires manual binding to PACK-personal.*
