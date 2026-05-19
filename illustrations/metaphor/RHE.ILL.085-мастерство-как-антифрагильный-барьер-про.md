@@ -11,7 +11,7 @@ illustrates:
 source_domain: "медицина, иммунология"
 audience_level: 3
 effect: persuade
-canonical: true
+canonical: false
 breaks_when: "Когда обучение становится болезнью само по себе (burn-out, информационная перегрузка), или когда прививка от одного риска создает новый (чрезмерная специализация ведет к хрупкости)"
 origin_source: "club/t/39162/p/65264"
 quality_score: 0.75

@@ -11,7 +11,7 @@ illustrates:
 source_domain: "психология мотивации, теория намерения"
 audience_level: 2
 effect: explain
-canonical: true
+canonical: false
 breaks_when: "когда человек находится в позиции, где первая версия действительно должна быть идеальна (хирургия, ядерные системы) или когда порог страха ниже порога совершенства"
 origin_source: "club/t/39169/p/65272"
 quality_score: 0.75

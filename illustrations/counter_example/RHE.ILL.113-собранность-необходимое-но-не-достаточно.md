@@ -11,7 +11,7 @@ illustrates:
 source_domain: "личное мастерство, управление ролями"
 audience_level: 3
 effect: persuade
-canonical: true
+canonical: false
 breaks_when: "когда репертуар ролей ≤2 и они близки по методам, собранность может быть полусредством"
 origin_source: "club/t/39145/p/65247"
 quality_score: 0.70

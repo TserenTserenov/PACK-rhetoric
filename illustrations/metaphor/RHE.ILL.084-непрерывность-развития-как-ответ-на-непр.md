@@ -11,7 +11,7 @@ illustrates:
 source_domain: "теория игр, системология"
 audience_level: 4
 effect: persuade
-canonical: true
+canonical: false
 breaks_when: "Когда правила жизни становятся статичными (что невозможно в реальности), или когда игрок полностью контролирует и предсказывает все правила"
 origin_source: "club/t/39162/p/65264"
 quality_score: 0.70

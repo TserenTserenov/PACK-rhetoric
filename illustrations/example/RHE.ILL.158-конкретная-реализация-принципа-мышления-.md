@@ -11,7 +11,7 @@ illustrates:
 source_domain: "методология обучения и письма"
 audience_level: 3
 effect: explain
-canonical: true
+canonical: false
 breaks_when: "не применяется для примера-демонстрации"
 origin_source: "club/t/1289/p/1294"
 quality_score: 0.79

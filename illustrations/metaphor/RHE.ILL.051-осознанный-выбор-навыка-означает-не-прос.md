@@ -2,7 +2,7 @@
 id: RHE.ILL.051
 trope_type: metaphor
 source_text: |
-  |
+  "буду брать себе на вооружение"
 structural_core: "Переносит свойство военной готовности (оружие = инструмент боевого действия) на применение интеллектуального навыка (готовность использовать знание в практике)."
 illustrates:
   - concept_id: TBD
@@ -11,7 +11,7 @@ illustrates:
 source_domain: "военное дело, боевая подготовка"
 audience_level: 3
 effect: persuade
-canonical: true
+canonical: false
 breaks_when: "Когда навык приобретён, но не применяется регулярно; остаётся на уровне знания без практики, не становится инструментом действия."
 origin_source: "club/t/39165/p/65275"
 quality_score: 0.75
@@ -23,7 +23,7 @@ created: 2026-05-19
 
 ## Source
 
-|
+"буду брать себе на вооружение"
 
 ## Structural Core
 

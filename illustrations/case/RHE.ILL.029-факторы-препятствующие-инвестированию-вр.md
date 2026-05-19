@@ -11,7 +11,7 @@ illustrates:
 source_domain: "личное развитие, когнитивная нагрузка, организация среды"
 audience_level: 3
 effect: scaffold
-canonical: true
+canonical: false
 breaks_when: "данный кейс демонстрирует условие, при котором принцип 'делать понемногу каждый день' затруднён, но не исключён (систематичность сохранена несмотря на низкий объём)"
 origin_source: "club/t/39197/p/65308"
 quality_score: 0.75

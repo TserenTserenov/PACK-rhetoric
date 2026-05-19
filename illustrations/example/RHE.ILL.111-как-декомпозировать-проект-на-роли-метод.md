@@ -12,7 +12,7 @@ source_domain: "инженерия ПО, управление проектами
 audience_level: 2
 effect: scaffold
 canonical: false
-breaks_when: "null"
+breaks_when: "Когда артефакт требует одновременного применения методов разных ролей (интеграционное тестирование синтезирует backend+frontend, контракт API согласует consumer+provider), вместо выхода из метода одной роли. Схема предполагает последовательность роль→метод→артефакт, но в реальности артефакт часто — пересечение методов."
 origin_source: "club/t/39145/p/65247"
 quality_score: 0.80
 status: active
@@ -31,7 +31,7 @@ created: 2026-05-19
 
 ## Boundaries (breaks_when)
 
-null
+Когда артефакт требует одновременного применения методов разных ролей (интеграционное тестирование синтезирует backend+frontend, контракт API согласует consumer+provider), вместо выхода из метода одной роли. Схема предполагает последовательность роль→метод→артефакт, но в реальности артефакт часто — пересечение методов.
 
 ---
 *Extraction: M-RM corpus mining. concept_id TBD — requires manual binding to PACK-personal.*

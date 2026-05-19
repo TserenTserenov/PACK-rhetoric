@@ -11,7 +11,7 @@ illustrates:
 source_domain: "организация физического пространства, садоводство"
 audience_level: 2
 effect: persuade
-canonical: true
+canonical: false
 breaks_when: "когда завершённые или отложенные проекты тут же воссоздают обязательства через внешние требования"
 origin_source: "club/t/39169/p/65272"
 quality_score: 0.75

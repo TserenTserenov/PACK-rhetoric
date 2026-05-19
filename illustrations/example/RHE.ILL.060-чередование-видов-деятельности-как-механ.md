@@ -11,7 +11,7 @@ illustrates:
 source_domain: "физиология, управление энергией"
 audience_level: 2
 effect: explain
-canonical: true
+canonical: false
 breaks_when: "когда обе деятельности требуют одних и тех же ресурсов или физическая активность становится ещё одной обязанностью"
 origin_source: "club/t/39169/p/65272"
 quality_score: 0.65

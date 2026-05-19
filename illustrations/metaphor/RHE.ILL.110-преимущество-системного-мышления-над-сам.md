@@ -11,7 +11,7 @@ illustrates:
 source_domain: "физика, пространство"
 audience_level: 2
 effect: persuade
-canonical: true
+canonical: false
 breaks_when: "когда объект анализа исключительно личный (психологическая травма) или когда нет данных о системе"
 origin_source: "club/t/39145/p/65247"
 quality_score: 0.70

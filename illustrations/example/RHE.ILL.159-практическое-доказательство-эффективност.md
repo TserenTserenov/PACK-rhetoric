@@ -11,7 +11,7 @@ illustrates:
 source_domain: "академическая наука, история методологии"
 audience_level: 3
 effect: persuade
-canonical: true
+canonical: false
 breaks_when: "не может быть проверен на основе обрезанного текста; пример обезличен"
 origin_source: "club/t/1289/p/1294"
 quality_score: 0.68

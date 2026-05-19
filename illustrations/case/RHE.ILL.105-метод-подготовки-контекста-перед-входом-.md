@@ -11,7 +11,7 @@ illustrates:
 source_domain: "управление ресурсами, спортивная подготовка"
 audience_level: 3
 effect: explain
-canonical: true
+canonical: false
 breaks_when: "если контекст не допускает паузации; если время подготовки превышает выигрыш от неё; если требуемые нагрузки переоценены"
 origin_source: "club/t/39169/p/65272"
 quality_score: 0.78

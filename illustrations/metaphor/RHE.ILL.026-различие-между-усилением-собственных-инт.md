@@ -2,7 +2,7 @@
 id: RHE.ILL.026
 trope_type: metaphor
 source_text: |
-  |
+  А в IWE есть два режима: экзоскелет и протез.
 structural_core: "[Режимы работы с инструментом] представлены как [экзоскелет: усиление собственных способностей vs протез: замена функции]"
 illustrates:
   - concept_id: TBD
@@ -23,7 +23,7 @@ created: 2026-05-19
 
 ## Source
 
-|
+А в IWE есть два режима: экзоскелет и протез.
 
 ## Structural Core
 
