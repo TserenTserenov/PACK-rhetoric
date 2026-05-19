@@ -35,13 +35,13 @@ SOTA современной риторики (RHE.SOTA.001).
 - [x] Заполнить карточки по шаблону: обязательно `structural_core` + `breaks_when`
 - [x] Commit: 19 карточек (analogy×4, metaphor×7, example×6, counter_example×2) — RHE.ILL.004-022
 
-### Ф4 — Расширение R15 Экстрактора (⏳ pending)
+### Ф4 — Расширение R15 Экстрактора (✅ IntegrationGate PASS, 2026-05-19)
 
-IntegrationGate обязателен перед реализацией:
-- [ ] DP.SC.NNN в PACK-digital-platform (Service Clause R15 mining mode)
-- [ ] Сценарии (SC-A: клуб, SC-B: on-demand, SC-C: embedding-resonance)
-- [ ] DP.ROLE.R15 update: добавить метод М-RM, routing target PACK-rhetoric
-- [ ] Адаптеры: клуб API/scraper, guide files reader, нормализатор
+IntegrationGate PASS:
+- [x] DP.SC.149 в PACK-digital-platform — corpus-mining SC, 3 сценария, partial-first, PII-gate
+- [x] Сценарии SC-A (ночной batch клуба), SC-B (on-demand), SC-C (embedding-resonance)
+- [x] DP.AISYS.013 update: метод М-RM (§4.9), trigger #11, related.sc/methods
+- [ ] Адаптеры: клуб API/scraper, guide files reader, нормализатор → Ф5
 
 ### Ф5 — Night Mining Scheduler (⏳ pending)
 
