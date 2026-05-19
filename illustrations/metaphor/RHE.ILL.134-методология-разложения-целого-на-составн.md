@@ -1,0 +1,37 @@
+---
+id: RHE.ILL.134
+trope_type: metaphor
+source_text: |
+  |
+structural_core: "Призма (оптический инструмент расчленения света) переносит способность разложения на компоненты на способность анализа жизни через компетенции"
+illustrates:
+  - concept_id: TBD
+    concept_description: "Методология разложения целого на составные части (компетенции) для понимания жизненной траектории"
+    pack_ref: PACK-personal
+source_domain: "оптика, физика"
+audience_level: 2
+effect: scaffold
+canonical: true
+breaks_when: "жизнь не имеет физической природы света; компетенции не разделяются независимо, как спектральные полосы"
+origin_source: "club/t/1297/p/1302"
+quality_score: 0.80
+status: active
+created: 2026-05-19
+---
+
+# [RHE.ILL.134] Методология разложения целого на составные части (компетенции) для понимания жизненной траектории
+
+## Source
+
+|
+
+## Structural Core
+
+Призма (оптический инструмент расчленения света) переносит способность разложения на компоненты на способность анализа жизни через компетенции
+
+## Boundaries (breaks_when)
+
+жизнь не имеет физической природы света; компетенции не разделяются независимо, как спектральные полосы
+
+---
+*Extraction: M-RM corpus mining. concept_id TBD — requires manual binding to PACK-personal.*

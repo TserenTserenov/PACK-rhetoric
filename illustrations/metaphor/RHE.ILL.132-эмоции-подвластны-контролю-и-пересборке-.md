@@ -1,0 +1,37 @@
+---
+id: RHE.ILL.132
+trope_type: metaphor
+source_text: |
+  |
+structural_core: "Эмоции уподобляются механической системе, переносят качества управляемости и настраиваемости"
+illustrates:
+  - concept_id: TBD
+    concept_description: "Эмоции подвластны контролю и пересборке, они не автономны и не непреодолимы"
+    pack_ref: PACK-personal
+source_domain: "инженерия (механизм, система, управление, калибровка)"
+audience_level: 2
+effect: persuade
+canonical: true
+breaks_when: "Когда эмоция вызвана острой физиологией (боль, голод, страх) или психологической травмой глубокого слоя"
+origin_source: "club/t/1343/p/1348"
+quality_score: 0.75
+status: active
+created: 2026-05-19
+---
+
+# [RHE.ILL.132] Эмоции подвластны контролю и пересборке, они не автономны и не непреодолимы
+
+## Source
+
+|
+
+## Structural Core
+
+Эмоции уподобляются механической системе, переносят качества управляемости и настраиваемости
+
+## Boundaries (breaks_when)
+
+Когда эмоция вызвана острой физиологией (боль, голод, страх) или психологической травмой глубокого слоя
+
+---
+*Extraction: M-RM corpus mining. concept_id TBD — requires manual binding to PACK-personal.*

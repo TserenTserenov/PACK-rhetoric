@@ -1,0 +1,37 @@
+---
+id: RHE.ILL.168
+trope_type: analogy
+source_text: |
+  |
+structural_core: "[Писательский жизненный цикл Хайнлайна] соответствует [Waterfall-методологии], потому что оба требуют линейного потока без итераций"
+illustrates:
+  - concept_id: TBD
+    concept_description: "древние практики случайно совпадают с современными методологиями управления"
+    pack_ref: PACK-personal
+source_domain: "управление проектами, software engineering"
+audience_level: 3
+effect: explain
+canonical: true
+breaks_when: "когда требуется множественная итерация, когда редактор требует глубоких переделок, когда рынок требует быстрого отклика на изменения"
+origin_source: "club/t/2458/p/2463"
+quality_score: 0.85
+status: draft
+created: 2026-05-19
+---
+
+# [RHE.ILL.168] древние практики случайно совпадают с современными методологиями управления
+
+## Source
+
+|
+
+## Structural Core
+
+[Писательский жизненный цикл Хайнлайна] соответствует [Waterfall-методологии], потому что оба требуют линейного потока без итераций
+
+## Boundaries (breaks_when)
+
+когда требуется множественная итерация, когда редактор требует глубоких переделок, когда рынок требует быстрого отклика на изменения
+
+---
+*Extraction: M-RM corpus mining. concept_id TBD — requires manual binding to PACK-personal.*

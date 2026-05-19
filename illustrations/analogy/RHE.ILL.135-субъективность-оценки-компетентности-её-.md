@@ -1,0 +1,37 @@
+---
+id: RHE.ILL.135
+trope_type: analogy
+source_text: |
+  |
+structural_core: "Истина, красота и компетентность — все зависят от восприятия и оценки наблюдателя (находятся 'в глазах ценителя')"
+illustrates:
+  - concept_id: TBD
+    concept_description: "Субъективность оценки компетентности; её зависимость от позиции оценивающего"
+    pack_ref: PACK-personal
+source_domain: "философия, теория познания"
+audience_level: 3
+effect: persuade
+canonical: false
+breaks_when: "контактные линзы имеют объективные физические свойства преломления, независимые от ценителя, в отличие от истины, красоты и компетентности"
+origin_source: "club/t/1297/p/1302"
+quality_score: 0.75
+status: active
+created: 2026-05-19
+---
+
+# [RHE.ILL.135] Субъективность оценки компетентности; её зависимость от позиции оценивающего
+
+## Source
+
+|
+
+## Structural Core
+
+Истина, красота и компетентность — все зависят от восприятия и оценки наблюдателя (находятся 'в глазах ценителя')
+
+## Boundaries (breaks_when)
+
+контактные линзы имеют объективные физические свойства преломления, независимые от ценителя, в отличие от истины, красоты и компетентности
+
+---
+*Extraction: M-RM corpus mining. concept_id TBD — requires manual binding to PACK-personal.*

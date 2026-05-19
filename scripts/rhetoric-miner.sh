@@ -4,9 +4,9 @@
 # see DP.SC.149, DP.AISYS.013 §4.9
 #
 # Usage:
-#   ./scripts/rhetoric-miner.sh              # club mining, default since 2026-01-01
+#   ./scripts/rhetoric-miner.sh              # topics mode (default, engagement-sorted)
 #   ./scripts/rhetoric-miner.sh --dry-run    # scan without LLM
-#   ./scripts/rhetoric-miner.sh --since 2026-05-01
+#   ./scripts/rhetoric-miner.sh --mode posts --since 2026-05-01  # legacy chronological
 #
 # Scheduled via:
 #   launchd: com.iwe.rhetoric-miner.plist (Mac, 02:00 MSK = 23:00 UTC)
@@ -55,18 +55,22 @@ git pull --rebase origin main 2>&1 || echo "  [WARN] git pull failed, working wi
 
 # ── Mine ──────────────────────────────────────────────────────────────────────
 echo "[2/3] Running M-RM miner..."
+MODE="topics"
 SINCE="${RHETORIC_SINCE:-2026-01-01}"
 DRY_RUN_FLAG=""
 for arg in "$@"; do
   case "$arg" in
-    --dry-run) DRY_RUN_FLAG="--dry-run" ;;
-    --since=*) SINCE="${arg#--since=}" ;;
-    --since)   shift; SINCE="$1" ;;
+    --dry-run)    DRY_RUN_FLAG="--dry-run" ;;
+    --mode=*)     MODE="${arg#--mode=}" ;;
+    --mode)       shift; MODE="$1" ;;
+    --since=*)    SINCE="${arg#--since=}" ;;
+    --since)      shift; SINCE="$1" ;;
   esac
 done
 
 python3 "$SCRIPT_DIR/rhetoric-miner.py" \
   --source club \
+  --mode "$MODE" \
   --since "$SINCE" \
   $DRY_RUN_FLAG
 

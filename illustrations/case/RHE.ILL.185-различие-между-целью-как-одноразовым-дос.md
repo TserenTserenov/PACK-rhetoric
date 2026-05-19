@@ -1,0 +1,37 @@
+---
+id: RHE.ILL.185
+trope_type: case
+source_text: |
+  |
+structural_core: "[Краткосрочное достижение события] (поступить в вуз) ≠ [Долгосрочное создание системы] (воспитание способного к обучению человека)"
+illustrates:
+  - concept_id: TBD
+    concept_description: "Различие между целью как одноразовым достижением и целью как созданием долговременной системы"
+    pack_ref: PACK-personal
+source_domain: "системный дизайн, воспитание, проектирование жизни"
+audience_level: 3
+effect: explain
+canonical: true
+breaks_when: "когда оценка успеха сводится только к конечному событию, без учёта устойчивости системы"
+origin_source: "club/t/1333/p/1338"
+quality_score: 0.82
+status: active
+created: 2026-05-19
+---
+
+# [RHE.ILL.185] Различие между целью как одноразовым достижением и целью как созданием долговременной системы
+
+## Source
+
+|
+
+## Structural Core
+
+[Краткосрочное достижение события] (поступить в вуз) ≠ [Долгосрочное создание системы] (воспитание способного к обучению человека)
+
+## Boundaries (breaks_when)
+
+когда оценка успеха сводится только к конечному событию, без учёта устойчивости системы
+
+---
+*Extraction: M-RM corpus mining. concept_id TBD — requires manual binding to PACK-personal.*

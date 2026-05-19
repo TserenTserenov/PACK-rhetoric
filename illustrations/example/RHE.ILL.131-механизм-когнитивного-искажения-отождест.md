@@ -1,0 +1,37 @@
+---
+id: RHE.ILL.131
+trope_type: example
+source_text: |
+  |
+structural_core: "Демонстрирует паттерн: [конкретная ошибка в ситуации Y] → [генерализация на личность: 'я ужасный']"
+illustrates:
+  - concept_id: TBD
+    concept_description: "Механизм когнитивного искажения — отождествление отдельного действия с идентичностью"
+    pack_ref: PACK-personal
+source_domain: "психология (генерализация, когнитивные ошибки)"
+audience_level: 2
+effect: explain
+canonical: true
+breaks_when: "Когда научиться разделять эмоцию от оценки: 'мне плохо' ≠ 'я плохой"
+origin_source: "club/t/1343/p/1348"
+quality_score: 0.90
+status: active
+created: 2026-05-19
+---
+
+# [RHE.ILL.131] Механизм когнитивного искажения — отождествление отдельного действия с идентичностью
+
+## Source
+
+|
+
+## Structural Core
+
+Демонстрирует паттерн: [конкретная ошибка в ситуации Y] → [генерализация на личность: 'я ужасный']
+
+## Boundaries (breaks_when)
+
+Когда научиться разделять эмоцию от оценки: 'мне плохо' ≠ 'я плохой
+
+---
+*Extraction: M-RM corpus mining. concept_id TBD — requires manual binding to PACK-personal.*

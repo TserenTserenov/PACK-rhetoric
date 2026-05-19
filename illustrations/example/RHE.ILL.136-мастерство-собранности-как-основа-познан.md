@@ -1,0 +1,37 @@
+---
+id: RHE.ILL.136
+trope_type: example
+source_text: |
+  |
+structural_core: "Демонстрирует последовательное освоение первичных компетенций (внимание, речь, двигательные навыки) в реальном развитии человека с рождения"
+illustrates:
+  - concept_id: TBD
+    concept_description: "Мастерство собранности как основа познания — происходит с младенчества"
+    pack_ref: PACK-personal
+source_domain: "психология развития, педагогика"
+audience_level: 1
+effect: explain
+canonical: true
+breaks_when: ""
+origin_source: "club/t/1297/p/1302"
+quality_score: 0.85
+status: active
+created: 2026-05-19
+---
+
+# [RHE.ILL.136] Мастерство собранности как основа познания — происходит с младенчества
+
+## Source
+
+|
+
+## Structural Core
+
+Демонстрирует последовательное освоение первичных компетенций (внимание, речь, двигательные навыки) в реальном развитии человека с рождения
+
+## Boundaries (breaks_when)
+
+
+
+---
+*Extraction: M-RM corpus mining. concept_id TBD — requires manual binding to PACK-personal.*

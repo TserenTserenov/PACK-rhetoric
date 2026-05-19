@@ -1,0 +1,37 @@
+---
+id: RHE.ILL.130
+trope_type: counter_example
+source_text: |
+  |
+structural_core: "[Опора на чистую силу воли] + [Экстремальное требование к телу] → [Повторный отказ + усиление самообвинения]"
+illustrates:
+  - concept_id: TBD
+    concept_description: "Классический подход (на основе силы воли) имеет жёсткий предел и не работает при высоком сопротивлении организма"
+    pack_ref: PACK-personal
+source_domain: "психология, физиология (утомление, истощение)"
+audience_level: 3
+effect: persuade
+canonical: true
+breaks_when: "Когда внедрение привычек происходит постепенно, с принятием себя, а не через волевое преодоление"
+origin_source: "club/t/1343/p/1348"
+quality_score: 0.80
+status: active
+created: 2026-05-19
+---
+
+# [RHE.ILL.130] Классический подход (на основе силы воли) имеет жёсткий предел и не работает при высоком сопротивлении организма
+
+## Source
+
+|
+
+## Structural Core
+
+[Опора на чистую силу воли] + [Экстремальное требование к телу] → [Повторный отказ + усиление самообвинения]
+
+## Boundaries (breaks_when)
+
+Когда внедрение привычек происходит постепенно, с принятием себя, а не через волевое преодоление
+
+---
+*Extraction: M-RM corpus mining. concept_id TBD — requires manual binding to PACK-personal.*
