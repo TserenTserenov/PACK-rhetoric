@@ -2,9 +2,9 @@
 
 > Источник: WP-340 (DS-my-strategy/inbox/WP-340/WP-340.md)
 
-## Текущий статус: v1.0.0 active (19 мая 2026)
+## Текущий статус: v1.1.0 active (19 мая 2026)
 
-**Ф1-Ф7 завершены.** 70 active + 2 pending карточек. Ночной scheduler настроен (launchd Mac + systemd tsekh-1). SPF 09-11 пройдены.
+**Ф1-Ф7 завершены.** 183 active + 11 pending карточек. Ночной scheduler настроен (launchd Mac + systemd tsekh-1). SPF 09-11 пройдены. Topics mode: 66 карточек из all-time top topics (2026-05-19).
 
 ## Фазы
 
@@ -73,3 +73,4 @@ IntegrationGate PASS:
 | v0.2.0 | 2026-05-19 | RHE.FORM.002 критерии валидации + 01B различения + Ф3.5: 19 карточек из DS-principles-curriculum |
 | v0.3.0 | 2026-05-19 | Ф5: scripts/ (rhetoric-miner.py + sh + plist + systemd) + ~30 карточек smoke test (RHE.ILL.023-070) |
 | v1.0.0 | 2026-05-19 | Ф6-Ф7: 70 active карточек (10/10 PASS), SPF 09-11, RHE.MAP.001, README, CHANGELOG — initial release |
+| v1.1.0 | 2026-05-19 | Topics mining: +66 карточек (183 active total), dry-run checkpoint fix |
