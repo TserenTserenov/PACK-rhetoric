@@ -5,11 +5,21 @@ rhetoric-miner.py — M-RM: ретроспективный майнинг илл
 # see DP.SC.149, DP.AISYS.013 §4.9 (M-RM)
 
 Usage:
-    python3 rhetoric-miner.py --source club --since 2026-01-01
-    python3 rhetoric-miner.py --source club --since 2026-01-01 --dry-run
+    # Режим topics (рекомендуемый) — отбор по вовлечённости за всё время:
+    python3 rhetoric-miner.py --source club --mode topics
+    python3 rhetoric-miner.py --source club --mode topics --dry-run
+
+    # Режим posts (устаревший) — хронологическая пагинация с 2026:
+    python3 rhetoric-miner.py --source club --mode posts --since 2026-01-01
+
     python3 rhetoric-miner.py --source guide --file path/to/guide.md
 
-Checkpoint: scripts/.checkpoint-club-YYYY-MM-DD.json
+Checkpoint:
+    .checkpoint-topics.json        — режим topics
+    .checkpoint-club-YYYY-MM-DD.json — режим posts
+
+Topic filter  : views >= 100 OR like_count >= 1 OR posts_count >= 15
+Post filter   : like_count >= 1 OR quote_count >= 1 OR incoming_link_count >= 1
 Output:
     active (quality_score >= 0.6) → illustrations/{type}/RHE.ILL.NNN-{slug}.md
     draft  (quality_score <  0.6) → illustrations/pending/RHE.ILL.NNN-{slug}.md
@@ -38,9 +48,21 @@ CHECKPOINT_DIR = Path(__file__).parent
 CLUB_BASE_URL = "https://systemsworld.club"
 API_TOKEN_FILE = Path.home() / ".secrets" / "club_api_token"
 RATE_LIMIT_DELAY = 1.2  # seconds between requests (≤50 req/min)
+QUALITY_THRESHOLD_ACTIVE = 0.6
+
+# Topic-mode filters
+TOPIC_MIN_VIEWS = 100       # тема видна многим участникам
+TOPIC_MIN_LIKES = 1         # хотя бы один лайк на тему
+TOPIC_MIN_POSTS = 15        # активная дискуссия
+
+# Post-mode filters (внутри темы)
+POST_MIN_LIKES = 1          # прямой сигнал «точно подмечено»
+POST_MIN_QUOTES = 1         # процитировали в другом посте
+POST_MIN_INCOMING_LINKS = 1 # сослались из другого поста
+
+# Legacy post-stream filters (режим posts)
 MIN_REACTIONS = 5
 MIN_COMMENTS = 3
-QUALITY_THRESHOLD_ACTIVE = 0.6
 
 CLAUDE_MODEL = "claude-haiku-4-5-20251001"  # trivial extraction task
 CLAUDE_TIMEOUT = 120  # seconds
@@ -336,7 +358,167 @@ def get_processed_post_ids_from_cards() -> set[int]:
     return ids
 
 
+# ── Topic-mode API ────────────────────────────────────────────────────────────
+
+def fetch_topics_page(page: int, order: str = "views") -> list[dict]:
+    """Fetch one page of /latest.json sorted by order."""
+    import urllib.request, urllib.error
+    url = f"{CLUB_BASE_URL}/latest.json?order={order}&page={page}"
+    req = urllib.request.Request(url, headers=_api_headers())
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            data = json.loads(resp.read().decode())
+            return data.get("topic_list", {}).get("topics", [])
+    except urllib.error.HTTPError as e:
+        if e.code == 429:
+            print(f"  429 rate limit on topics page {page}, sleeping 60s", file=sys.stderr)
+            time.sleep(60)
+        else:
+            print(f"  HTTP {e.code} on topics page {page}", file=sys.stderr)
+        return []
+    except Exception as e:
+        print(f"  Error fetching topics page {page}: {e}", file=sys.stderr)
+        return []
+
+
+def passes_topic_filter(topic: dict) -> bool:
+    return (
+        topic.get("views", 0) >= TOPIC_MIN_VIEWS
+        or topic.get("like_count", 0) >= TOPIC_MIN_LIKES
+        or topic.get("posts_count", 0) >= TOPIC_MIN_POSTS
+    )
+
+
+def fetch_topic_full(topic_id: int) -> dict:
+    """Fetch full topic data including per-post metrics."""
+    import urllib.request
+    url = f"{CLUB_BASE_URL}/t/{topic_id}.json"
+    req = urllib.request.Request(url, headers=_api_headers())
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            return json.loads(resp.read().decode())
+    except Exception as e:
+        print(f"  Error fetching topic {topic_id}: {e}", file=sys.stderr)
+        return {}
+
+
+def get_qualifying_posts_from_topic(topic_data: dict) -> list[dict]:
+    """Return posts from topic that pass post-level engagement filter."""
+    posts = topic_data.get("post_stream", {}).get("posts", [])
+    result = []
+    for p in posts:
+        if (
+            p.get("like_count", 0) >= POST_MIN_LIKES
+            or p.get("quote_count", 0) >= POST_MIN_QUOTES
+            or p.get("incoming_link_count", 0) >= POST_MIN_INCOMING_LINKS
+        ):
+            result.append(p)
+    return result
+
+
 # ── Main flows ────────────────────────────────────────────────────────────────
+
+def mine_club_topics(dry_run: bool = False) -> dict:
+    """Mine club topics sorted by views, filter by engagement.
+    Двухуровневый отбор:
+      1. Тема: views>=100 OR like_count>=1 OR posts_count>=15
+      2. Пост внутри темы: like_count>=1 OR quote_count>=1 OR incoming_link_count>=1
+    """
+    cp_file = CHECKPOINT_DIR / ".checkpoint-topics.json"
+    checkpoint = json.loads(cp_file.read_text()) if cp_file.exists() else {}
+    start_page = checkpoint.get("last_page", 0)
+    processed_topic_ids: set = set(checkpoint.get("processed_topic_ids", []))
+    processed_post_ids: set = get_processed_post_ids_from_cards()
+
+    stats = {
+        "topics_scanned": 0, "topics_qualified": 0,
+        "posts_qualified": 0, "cards_created": 0, "cards_pending": 0,
+    }
+
+    print(f"[M-RM] Club topics mining (views-sorted), start page {start_page}")
+    print(f"  [dedup] {len(processed_post_ids)} post IDs already in cards")
+    page = start_page
+
+    while True:
+        print(f"  Topics page {page}...", end=" ", flush=True)
+        topics = fetch_topics_page(page, order="views")
+        time.sleep(RATE_LIMIT_DELAY)
+
+        if not topics:
+            print("(empty, done)")
+            break
+
+        qualified = [t for t in topics if passes_topic_filter(t)]
+        stats["topics_scanned"] += len(topics)
+        print(f"{len(topics)} topics, {len(qualified)} qualified")
+
+        for topic in qualified:
+            tid = topic["id"]
+            if tid in processed_topic_ids:
+                continue
+
+            title = topic.get("title", "?")
+            views = topic.get("views", 0)
+            likes = topic.get("like_count", 0)
+            posts_count = topic.get("posts_count", 0)
+            print(f"    [{tid}] views={views} likes={likes} posts={posts_count} — {title[:55]}")
+
+            topic_data = fetch_topic_full(tid)
+            time.sleep(RATE_LIMIT_DELAY)
+
+            if not topic_data:
+                processed_topic_ids.add(tid)
+                continue
+
+            qualifying_posts = get_qualifying_posts_from_topic(topic_data)
+            stats["topics_qualified"] += 1
+
+            for post in qualifying_posts:
+                pid = post.get("id")
+                if pid in processed_post_ids:
+                    continue
+
+                text = post_text(post)
+                if len(text) < 80:
+                    processed_post_ids.add(pid)
+                    continue
+
+                stats["posts_qualified"] += 1
+                origin = f"club/t/{tid}/p/{pid}"
+                nxt_int, nxt_id = get_next_illustration_id()
+                likes_p = post.get("like_count", 0)
+                quotes_p = post.get("quote_count", 0)
+                links_p = post.get("incoming_link_count", 0)
+                print(f"      post/{pid} likes={likes_p} quotes={quotes_p} links={links_p} ({len(text)} chars)")
+
+                cards = extract_illustrations_from_text(text, nxt_id, dry_run=dry_run)
+                time.sleep(0.5)
+
+                for card in cards:
+                    out_path = write_card(card, origin_source=origin)
+                    is_active = "pending" not in str(out_path)
+                    if is_active:
+                        stats["cards_created"] += 1
+                        print(f"        ✅ {out_path.name}")
+                    else:
+                        stats["cards_pending"] += 1
+                        print(f"        📋 {out_path.name} (pending)")
+
+                processed_post_ids.add(pid)
+
+            processed_topic_ids.add(tid)
+
+        # Checkpoint every page (skip in dry-run to avoid poisoning state)
+        if not dry_run:
+            cp_file.write_text(json.dumps({
+                "last_page": page + 1,
+                "processed_topic_ids": list(processed_topic_ids),
+            }, indent=2))
+
+        page += 1
+
+    return stats
+
 
 def mine_club(since_date: str, dry_run: bool = False) -> dict:
     """Mine club posts since given date. Returns stats dict."""
@@ -468,7 +650,10 @@ def mine_guide(file_path: str, dry_run: bool = False) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser(description="M-RM: rhetoric corpus miner")
     parser.add_argument("--source", choices=["club", "guide"], default="club")
-    parser.add_argument("--since", default="2026-01-01", help="ISO date for club mining")
+    parser.add_argument("--mode", choices=["topics", "posts"], default="topics",
+                        help="topics=engagement-sorted (recommended); posts=chronological legacy")
+    parser.add_argument("--since", default="2026-01-01",
+                        help="ISO date cutoff for --mode posts")
     parser.add_argument("--file", help="Guide file path (for --source guide)")
     parser.add_argument("--dry-run", action="store_true",
                         help="Scan and filter without calling LLM")
@@ -477,7 +662,10 @@ def main() -> None:
     started = datetime.now()
 
     if args.source == "club":
-        stats = mine_club(args.since, dry_run=args.dry_run)
+        if args.mode == "topics":
+            stats = mine_club_topics(dry_run=args.dry_run)
+        else:
+            stats = mine_club(args.since, dry_run=args.dry_run)
     elif args.source == "guide":
         if not args.file:
             print("ERROR: --file required for --source guide", file=sys.stderr)
