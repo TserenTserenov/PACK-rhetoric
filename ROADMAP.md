@@ -43,12 +43,12 @@ IntegrationGate PASS:
 - [x] DP.AISYS.013 update: метод М-RM (§4.9), trigger #11, related.sc/methods
 - [ ] Адаптеры: клуб API/scraper, guide files reader, нормализатор → Ф5
 
-### Ф5 — Night Mining Scheduler (⏳ pending)
+### Ф5 — Night Mining Scheduler (✅ done 2026-05-19)
 
-- [ ] Скрипт mining клуба: GET /posts 2026→назад, rate-limited
-- [ ] Фильтр: ≥5 reaction или ≥3 комментария
-- [ ] Launchd plist (Mac) + systemd unit (tsekh-1), 02:00 МСК
-- [ ] Test-run: ≥5 корректных карточек
+- [x] Скрипт mining клуба: GET /posts 2026→назад, rate-limited
+- [x] Фильтр: ≥5 reaction или ≥3 комментария (score field)
+- [x] Launchd plist (Mac) + systemd unit (tsekh-1), 02:00 МСК
+- [x] Test-run: ~30 карточек из 11 постов (2026-05-17)
 
 ### Ф6 — Initial Seed (⏳ pending)
 
@@ -70,3 +70,4 @@ IntegrationGate PASS:
 | v0.1.0 | 2026-05-19 | Онтология, SC, шаблон, 3 seed-карточки, пуш в GitHub |
 | v0.1.1 | 2026-05-19 | RHE.SOTA.001 современная риторика + ИИ-эпоха |
 | v0.2.0 | 2026-05-19 | RHE.FORM.002 критерии валидации + 01B различения + Ф3.5: 19 карточек из DS-principles-curriculum |
+| v0.3.0 | 2026-05-19 | Ф5: scripts/ (rhetoric-miner.py + sh + plist + systemd) + ~30 карточек smoke test (RHE.ILL.023-070) |
