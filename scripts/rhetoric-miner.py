@@ -317,13 +317,35 @@ created: {date.today().isoformat()}
     return out_path
 
 
+# ── Deduplication ─────────────────────────────────────────────────────────────
+
+def get_processed_post_ids_from_cards() -> set[int]:
+    """Scan all existing illustration cards for origin_source post IDs.
+    Prevents re-processing posts already mined in a previous run, regardless
+    of which checkpoint file was used.
+    """
+    ids: set[int] = set()
+    pattern = re.compile(r'origin_source:\s*"?club/t/\d+/p/(\d+)"?')
+    for md_file in ILLUSTRATIONS_DIR.rglob("*.md"):
+        try:
+            text = md_file.read_text(encoding="utf-8")
+            for m in pattern.finditer(text):
+                ids.add(int(m.group(1)))
+        except Exception:
+            pass
+    return ids
+
+
 # ── Main flows ────────────────────────────────────────────────────────────────
 
 def mine_club(since_date: str, dry_run: bool = False) -> dict:
     """Mine club posts since given date. Returns stats dict."""
     since_dt = datetime.strptime(since_date, "%Y-%m-%d")
     checkpoint = load_checkpoint("club", since_date)
-    processed_ids: set = set(checkpoint.get("processed_post_ids", []))
+    # Merge checkpoint IDs with IDs already present in written cards
+    card_ids = get_processed_post_ids_from_cards()
+    processed_ids: set = set(checkpoint.get("processed_post_ids", [])) | card_ids
+    print(f"  [dedup] {len(card_ids)} post IDs already in cards — will skip")
     cards_created = checkpoint.get("cards_created", 0)
     start_page = checkpoint.get("last_page", 0)
 
