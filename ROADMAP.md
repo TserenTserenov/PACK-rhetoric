@@ -15,11 +15,11 @@
 - [x] Различения Pack (01B) — 7 различений: иллюстрация≠понятие, структурный≠поверхностный, effect:explain≠persuade≠scaffold
 - [x] Связи с потребителями формализованы
 
-### Ф2 — Онтология & Taxonomy (✅ draft)
+### Ф2 — Онтология & Taxonomy (✅ done 2026-05-20)
 
 - [x] RHE.D.001 Illustration — схема карточки
-- [x] RHE.D.002 Trope Taxonomy — 5 типов
-- [ ] RHE.D.003 CorpusSource — описание источников (клуб, руководства, книги)
+- [x] RHE.D.002 Trope Taxonomy — 5 типов + scaffold (Chain-of-Thought)
+- [x] RHE.D.003 CorpusSource — описание источников (клуб, руководства, книги, telegram)
 
 ### Ф3 — Formalizations (✅ done)
 
