@@ -25,6 +25,8 @@ StandardError=append:/home/tserentserenov/IWE/PACK-rhetoric/scripts/logs/systemd
 Environment="HOME=/home/tserentserenov"
 Environment="PATH=/usr/local/bin:/usr/bin:/bin:/home/tserentserenov/.local/bin"
 Environment="RHETORIC_SINCE=2026-01-01"
+Environment="ANTHROPIC_BASE_URL=https://iwe-llm-proxy-production.up.railway.app"
+EnvironmentFile=-/home/tserentserenov/.iwe/.proxy-env
 
 [Install]
 WantedBy=multi-user.target
