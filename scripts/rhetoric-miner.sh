@@ -38,8 +38,10 @@ echo ""
 echo "=== rhetoric-miner $(date '+%Y-%m-%d %H:%M:%S') ==="
 
 # ── Env check ─────────────────────────────────────────────────────────────────
-if ! command -v claude &> /dev/null; then
-  echo "[ERROR] claude CLI not found in PATH"
+# rhetoric-miner.py использует прямой /v1/messages API через ANTHROPIC_BASE_URL,
+# не claude CLI (CLI 2.x несовместим с проксей по валидации моделей).
+if [ -z "${ANTHROPIC_API_KEY:-}" ]; then
+  echo "[ERROR] ANTHROPIC_API_KEY not set (см. EnvironmentFile=~/.iwe/.proxy-env)"
   exit 1
 fi
 

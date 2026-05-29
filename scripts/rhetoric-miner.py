@@ -34,6 +34,8 @@ import re
 import subprocess
 import sys
 import time
+import urllib.error
+import urllib.request
 from datetime import datetime, date
 from pathlib import Path
 from typing import Optional
@@ -165,28 +167,63 @@ def build_prompt(post_text_content: str, next_id: str) -> str:
     return prompt
 
 
+def call_llm_via_messages_api(prompt: str) -> str:
+    """Call Anthropic /v1/messages directly through proxy.
+    Bypasses claude CLI because CLI 2.x validates models via /v1/models in a way
+    that doesn't accept the dated model id (claude-haiku-4-5-20251001) even when
+    proxy returns it. Direct API call is more reliable for headless workers.
+    Honors ANTHROPIC_BASE_URL (proxy URL) and ANTHROPIC_API_KEY (proxy shared secret
+    or real Anthropic key — proxy distinguishes by header).
+    """
+    base_url = os.environ.get("ANTHROPIC_BASE_URL", "https://api.anthropic.com").rstrip("/")
+    api_key = os.environ.get("ANTHROPIC_API_KEY", "")
+    if not api_key:
+        raise RuntimeError("ANTHROPIC_API_KEY not set")
+
+    payload = {
+        "model": CLAUDE_MODEL,
+        "max_tokens": 4096,
+        "messages": [{"role": "user", "content": prompt}],
+    }
+    req = urllib.request.Request(
+        base_url + "/v1/messages",
+        data=json.dumps(payload).encode(),
+        headers={
+            "x-api-key": api_key,
+            "anthropic-version": "2023-06-01",
+            "content-type": "application/json",
+        },
+        method="POST",
+    )
+    with urllib.request.urlopen(req, timeout=CLAUDE_TIMEOUT) as resp:
+        body = json.loads(resp.read())
+    parts = [b.get("text", "") for b in body.get("content", []) if b.get("type") == "text"]
+    return "".join(parts).strip()
+
+
 def extract_illustrations_from_text(
     text: str, next_id: str, dry_run: bool = False
 ) -> list[dict]:
-    """Call claude -p, parse YAML cards from output."""
+    """Call Anthropic /v1/messages via proxy, parse YAML cards from output."""
     if dry_run:
-        print("    [DRY-RUN] Would call claude -p for extraction")
+        print("    [DRY-RUN] Would call /v1/messages for extraction")
         return []
 
     prompt = build_prompt(text, next_id)
-    cmd = ["claude", "-p", prompt, "--model", CLAUDE_MODEL,
-           "--output-format", "text"]
     try:
-        r = subprocess.run(cmd, capture_output=True, text=True, timeout=CLAUDE_TIMEOUT)
-        output = r.stdout.strip()
-    except subprocess.TimeoutExpired:
-        print("    TIMEOUT waiting for claude", file=sys.stderr)
+        output = call_llm_via_messages_api(prompt)
+    except urllib.error.HTTPError as e:
+        body = e.read().decode(errors="replace")[:300]
+        print(f"    HTTP {e.code} from LLM API: {body}", file=sys.stderr)
         return []
-    except FileNotFoundError:
-        print("    ERROR: claude CLI not found in PATH", file=sys.stderr)
+    except urllib.error.URLError as e:
+        print(f"    URLError calling LLM API: {e}", file=sys.stderr)
+        return []
+    except Exception as e:
+        print(f"    ERROR calling LLM API: {e}", file=sys.stderr)
         return []
 
-    if "NO_ILLUSTRATIONS" in output:
+    if not output or "NO_ILLUSTRATIONS" in output:
         return []
 
     return parse_yaml_cards(output)
