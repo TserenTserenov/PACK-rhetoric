@@ -1,15 +1,19 @@
-# rhetoric-miner.service — systemd unit для tsekh-1
+# rhetoric-miner.service — user systemd unit для tsekh-1
 # see DP.SC.149, DP.AISYS.013 §4.9 (M-RM)
+# WP-200 Ф7: user-unit (как overnight-auditor/scout), не system-unit. peer-session 2026-05-29-29.
 #
-# Install on tsekh-1:
-#   sudo cp rhetoric-miner.service /etc/systemd/system/
-#   sudo cp rhetoric-miner.timer /etc/systemd/system/
-#   sudo systemctl daemon-reload
-#   sudo systemctl enable rhetoric-miner.timer
-#   sudo systemctl start rhetoric-miner.timer
+# Install on tsekh-1 (как пользователь tseren, linger=yes):
+#   mkdir -p ~/.config/systemd/user
+#   cp rhetoric-miner.service ~/.config/systemd/user/
+#   cp rhetoric-miner.timer ~/.config/systemd/user/
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now rhetoric-miner.timer
 #
 # Manual trigger:
-#   sudo systemctl start rhetoric-miner.service
+#   systemctl --user start rhetoric-miner.service
+#
+# Logs:
+#   journalctl --user -u rhetoric-miner.service -n 100
 
 [Unit]
 Description=PACK-rhetoric M-RM night miner (DP.SC.149)
@@ -17,16 +21,14 @@ After=network.target
 
 [Service]
 Type=oneshot
-User=tserentserenov
-WorkingDirectory=/home/tserentserenov/IWE/PACK-rhetoric
-ExecStart=/bin/bash /home/tserentserenov/IWE/PACK-rhetoric/scripts/rhetoric-miner.sh
-StandardOutput=append:/home/tserentserenov/IWE/PACK-rhetoric/scripts/logs/systemd-stdout.log
-StandardError=append:/home/tserentserenov/IWE/PACK-rhetoric/scripts/logs/systemd-stderr.log
-Environment="HOME=/home/tserentserenov"
-Environment="PATH=/usr/local/bin:/usr/bin:/bin:/home/tserentserenov/.local/bin"
+WorkingDirectory=%h/IWE/PACK-rhetoric
+ExecStart=/bin/bash %h/IWE/PACK-rhetoric/scripts/rhetoric-miner.sh
+StandardOutput=append:%h/IWE/PACK-rhetoric/scripts/logs/systemd-stdout.log
+StandardError=append:%h/IWE/PACK-rhetoric/scripts/logs/systemd-stderr.log
+Environment="PATH=%h/.local/bin:/run/current-system/sw/bin:/usr/local/bin:/usr/bin:/bin"
 Environment="RHETORIC_SINCE=2026-01-01"
 Environment="ANTHROPIC_BASE_URL=https://iwe-llm-proxy-production.up.railway.app"
-EnvironmentFile=-/home/tserentserenov/.iwe/.proxy-env
+EnvironmentFile=-%h/.iwe/.proxy-env
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
