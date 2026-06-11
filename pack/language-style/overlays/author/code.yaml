@@ -1,0 +1,9 @@
+# Авторское наложение L1 (инженерный код). see DP.SC.173, peer-session 2026-06-11-33.
+# content-bearing: указатель на владельца L1, компилятор его materialize (не render).
+# Слой каскада base → domain → market → [author] → user. Опционален (applies_to не матчит → пропуск).
+overlay_class: author
+overlay_type: content
+content_source: L1.code-style   # DS-my-strategy/memory/code-style-author.md
+applies_to:
+  reader_role: [developer]
+  channel: [code]

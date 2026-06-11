@@ -4,3 +4,6 @@
 # Облачная резолюция (когда соседнего пака нет) вынесена за скоуп Ф5 → Ф10 (split платформа/IWE).
 DP.SC.050: PACK-digital-platform/pack/digital-platform/02-domain-entities/communication-style-base.md
 DP.SC.172: PACK-digital-platform/pack/digital-platform/02-domain-entities/engineering-code-style-base.md
+# Владельцы авторского слоя L1 (Ф6) — третий репо, DS-my-strategy/memory. additive-only поверх L0.
+L1.communication: DS-my-strategy/memory/communication-style-author.md
+L1.code-style: DS-my-strategy/memory/code-style-author.md

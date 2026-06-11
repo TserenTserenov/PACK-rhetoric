@@ -40,7 +40,7 @@ WILDCARD = "*"
 AXES = ("reader_meta_class", "reader_role", "channel", "domain")
 # Бамп при изменении логики материализации/каскада: инвалидирует derived-кэш даже если
 # источники не менялись (manifest_hash один, а выход компилятора другой).
-COMPILER_VERSION = "f5.1"
+COMPILER_VERSION = "f6.1"
 
 
 def find_iwe_root(start: Path) -> Path:
@@ -177,60 +177,80 @@ def resolve_slot(slots: list[Slot], fallback_id: str, key: dict) -> tuple[Slot, 
 
 # ---------- материализация контента ----------
 
+def materialize_content(source_id: str, content_sources: dict) -> tuple[str, dict]:
+    """Тело из владельца контента по id: strip frontmatter + регион инъекции.
+    Переиспользуется base-слотом и author-overlay (оба content-bearing). Возвращает (тело, ref)."""
+    owner = content_sources.get(source_id)
+    if owner is None or not owner.exists():
+        # Честно падаем, не молчим (P4): валидный источник без владельца — это дефект данных.
+        raise FileNotFoundError(f"Владелец контента {source_id} не найден: {owner}")
+    _, body = split_frontmatter(owner.read_text("utf-8"))
+    ref = {"source_id": f"content:{source_id}", "source_hash": sha256_file(owner)}
+    return extract_inject_region(body), ref
+
+
 def materialize_base(slot: Slot, content_sources: dict) -> tuple[str, list[dict]]:
     """Тело базового фрагмента из владельца контента. inline → fallback_text слота.
     Возвращает (фрагмент, source_refs использованных источников)."""
     refs = [{"source_id": f"slot:{slot.slot_id}", "source_hash": slot.slot_sha}]
     if slot.content_source == "inline":
         return slot.fallback_text.rstrip("\n"), refs
-    owner = content_sources.get(slot.content_source)
-    if owner is None or not owner.exists():
-        # Режим отказа уже отработал на уровне резолюции; сюда попадаем только если
-        # у валидного слота пропал владелец — честно сообщаем, не молчим (P4).
-        raise FileNotFoundError(
-            f"Владелец контента {slot.content_source} для слота {slot.slot_id} не найден: {owner}"
-        )
-    _, body = split_frontmatter(owner.read_text("utf-8"))
-    refs.append({"source_id": f"content:{slot.content_source}", "source_hash": sha256_file(owner)})
-    return extract_inject_region(body), refs
+    body, ref = materialize_content(slot.content_source, content_sources)
+    refs.append(ref)
+    return body, refs
 
 
 # ---------- каскад наложений ----------
 
-def domain_applies(ov: dict, slot: Slot, key: dict) -> bool:
-    """Доменное наложение применимо, если домен совпал и applies_to пускает роль/канал слота."""
-    if ov.get("domain") != key["domain"]:
-        return False
-    gate = ov.get("applies_to", {})
+def applies_to_gate(gate: dict, slot: Slot) -> bool:
+    """Пускает ли applies_to роль/канал слота. Пустой gate → пускает всех."""
     role_ok = "reader_role" not in gate or slot.context_key["reader_role"] in gate["reader_role"]
     channel_ok = "channel" not in gate or slot.context_key["channel"] in gate["channel"]
     return role_ok and channel_ok
 
 
+def domain_applies(ov: dict, slot: Slot, key: dict) -> bool:
+    """Доменное наложение применимо, если домен совпал и applies_to пускает роль/канал слота."""
+    return ov.get("domain") == key["domain"] and applies_to_gate(ov.get("applies_to", {}), slot)
+
+
 def select_overlays(index: dict, slot: Slot, key: dict, user_override: dict):
-    """Выбрать применимые наложения в порядке каскада. Возвращает (список (имя, путь, data), refs)."""
+    """Выбрать применимые наложения в порядке каскада base→domain→market→author→user.
+    Возвращает (список descriptor'ов {name, kind, data}, refs по overlay-файлам).
+    kind: 'data' (domain/market — render структуры) | 'content' (author — materialize владельца) | 'user'."""
     chosen, refs = [], []
-    for rel in index.get("overlays", {}).get("domain", []):
+    overlays = index.get("overlays", {})
+    for rel in overlays.get("domain", []):
         path = PACK_DIR / rel
         data = yaml.safe_load(path.read_text("utf-8"))
         if domain_applies(data, slot, key):
-            chosen.append((f"domain:{data['domain']}", data))
+            chosen.append({"name": f"domain:{data['domain']}", "kind": "data", "data": data})
             refs.append({"source_id": f"overlay:domain:{data['domain']}", "source_hash": sha256_file(path)})
     market = key.get("market")
     if market:
-        for rel in index.get("overlays", {}).get("market", []):
+        for rel in overlays.get("market", []):
             path = PACK_DIR / rel
             data = yaml.safe_load(path.read_text("utf-8"))
             if data.get("market") == market:
-                chosen.append((f"market:{data['market']}", data))
+                chosen.append({"name": f"market:{data['market']}", "kind": "data", "data": data})
                 refs.append({"source_id": f"overlay:market:{data['market']}", "source_hash": sha256_file(path)})
+    # author — content-bearing слой L1, опционален: applies_to не матчит → пропускаем без ошибки.
+    # author БЕЗ applies_to НЕ применяется: иначе он подмешался бы к fallback-полу (role=*) и
+    # загрязнил режим отказа. author обязан быть таргетирован на регистр (защита инварианта fallback).
+    for rel in overlays.get("author", []):
+        path = PACK_DIR / rel
+        data = yaml.safe_load(path.read_text("utf-8"))
+        gate = data.get("applies_to", {})
+        if gate and applies_to_gate(gate, slot):
+            chosen.append({"name": f"author:{data['content_source']}", "kind": "content", "data": data})
+            refs.append({"source_id": f"overlay:author:{data['content_source']}", "source_hash": sha256_file(path)})
     if user_override:
-        chosen.append(("user", user_override))
+        chosen.append({"name": "user", "kind": "user", "data": user_override})
     return chosen, refs
 
 
 def render_overlay(name: str, data: dict) -> str:
-    """Человекочитаемая добавка фрагмента от одного наложения."""
+    """Человекочитаемая добавка фрагмента от data-наложения (domain/market/user)."""
     if name.startswith("domain:"):
         jargon = ", ".join(data.get("jargon_whitelist", [])) or "—"
         concepts = ", ".join(data.get("concepts", [])) or "—"
@@ -264,17 +284,18 @@ def full_key_hash(context_key: dict, uo_hash: str, pl_hash: str) -> str:
     return sha256_text(canonical_json(payload))
 
 
-# ---------- манифест свежести (оба репо) ----------
+# ---------- манифест свежести (все репо: PACK-rhetoric + PACK-digital-platform + DS-my-strategy) ----------
 
 def all_source_paths(index: dict, content_sources: dict) -> list[tuple[str, Path]]:
-    """Все источники, влияющие на сборку: слоты + владельцы контента + наложения."""
+    """Все источники, влияющие на сборку: слоты + владельцы контента (L0+L1) + наложения.
+    Владельцы L1 (author) живут в DS-my-strategy/memory — манифест охватывает три репо."""
     items: list[tuple[str, Path]] = []
     for rel in index["slots"]:
         items.append((f"slot:{rel}", PACK_DIR / rel))
     for sid, path in content_sources.items():
         items.append((f"content:{sid}", path))
-    for cls in ("domain", "market"):
-        for rel in index.get("overlays", {}).get(cls, []):
+    for cls, rels in index.get("overlays", {}).items():
+        for rel in rels:
             items.append((f"overlay:{cls}:{rel}", PACK_DIR / rel))
     return items
 
@@ -313,7 +334,7 @@ def compile_key(context_key: dict, user_override: dict | None = None, use_cache:
 
     slot, fallback_used = resolve_slot(slots, index["fallback"], key)
     overlays, ov_refs = select_overlays(index, slot, key, user_override)
-    overlay_names = [name for name, _ in overlays]
+    overlay_names = [ov["name"] for ov in overlays]
 
     pl_hash = platform_layer_hash(slot, overlay_names)
     uo_hash = user_override_hash(user_override)
@@ -329,8 +350,14 @@ def compile_key(context_key: dict, user_override: dict | None = None, use_cache:
 
     base_fragment, refs = materialize_base(slot, content_sources)
     parts = [base_fragment]
-    for name, data in overlays:
-        parts.append(render_overlay(name, data))
+    for ov in overlays:
+        if ov["kind"] == "content":
+            # author-слой: материализуем владельца L1 (а не render структуры).
+            body, cref = materialize_content(ov["data"]["content_source"], content_sources)
+            parts.append(f"\n\n{body}")
+            refs.append(cref)
+        else:
+            parts.append(render_overlay(ov["name"], ov["data"]))
     fragment = "".join(parts)
 
     result = CompiledResult(

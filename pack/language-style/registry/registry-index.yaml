@@ -12,9 +12,13 @@ slots:
   - 05-formalizations/LS.FORM.001-register-pilot-ide.ru.md
   - 05-formalizations/LS.FORM.002-register-code-developer.ru.md
 
-# Кросс-осевые слои каскада (base → domain → market → user). user-слой передаётся в рантайме.
+# Кросс-осевые слои каскада (base → domain → market → author → user). user-слой передаётся в рантайме.
+# author — content-bearing (L1 автора), выбирается по applies_to, опционален.
 overlays:
   domain:
     - overlays/domain/personal-development.yaml
   market:
     - overlays/market/ru.yaml
+  author:
+    - overlays/author/conversational.yaml
+    - overlays/author/code.yaml
