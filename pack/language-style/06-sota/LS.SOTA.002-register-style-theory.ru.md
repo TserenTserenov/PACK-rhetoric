@@ -1,17 +1,18 @@
-<!-- DRAFT, без постоянного ID. Ф4 РП-412 присвоит LS.SOTA.002 при переименовании пака rhetoric → language-style (git mv). См. inbox/WP-412.md раздел «Ф1». -->
 ---
-id: DRAFT-register-style-theory
+id: LS.SOTA.002
 name: Теория регистра и языкового стиля
 type: sota
-status: draft
+status: active
 created: 2026-06-10
+valid_from: 2026-06-11
+lang: ru
+role: canon
 horizon: active
 sources_checked: 2026-06-10
-provenance: peer-сессия 2026-06-10-29 (Claude писатель + Kimi напарник), РП-412 Ф2
-mint_id_at: Ф4 (LS.SOTA.002)
+provenance: peer-сессия 2026-06-10-29 (Claude писатель + Kimi напарник), РП-412 Ф2; минт id Ф4а 2026-06-11 (peer-сессия 2026-06-11-28)
 ---
 
-# [DRAFT] Теория регистра и языкового стиля
+# [LS.SOTA.002] Теория регистра и языкового стиля
 
 > Обзор состояния области для дисциплины управления языковыми стилями IWE. Опирается на 7 различений Ф1 (см. `inbox/WP-412.md`). Не классика ради классики — каждый источник закрывает конкретную ось рабочей модели.
 
