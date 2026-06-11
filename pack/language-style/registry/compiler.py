@@ -40,7 +40,7 @@ WILDCARD = "*"
 AXES = ("reader_meta_class", "reader_role", "channel", "domain")
 # Бамп при изменении логики материализации/каскада: инвалидирует derived-кэш даже если
 # источники не менялись (manifest_hash один, а выход компилятора другой).
-COMPILER_VERSION = "f8.1"
+COMPILER_VERSION = "f8.2"
 
 
 def find_iwe_root(start: Path) -> Path:
@@ -253,7 +253,12 @@ def select_overlays(index: dict, slot: Slot, key: dict, user_override: dict):
         if gate and applies_to_gate(gate, slot):
             chosen.append({"name": f"author:{data['content_source']}", "kind": "content", "data": data})
             refs.append({"source_id": f"overlay:author:{data['content_source']}", "source_hash": sha256_file(path)})
-    if user_override:
+    # GUARDRAIL (Ф7, safety-инвариант): пользовательский тон применяется ТОЛЬКО к человеко-регистрам.
+    # Агент-регистры (commit/handoff/контракт) — машинные контракты, пользователь их не тюнит.
+    # Гейт по ЗАПРОШЕННОМУ ключу (читатель), не по разрешённому слоту: человеко-запрос на промахе
+    # ключа (→ fallback) всё равно получает тон. Безопасно: человеко-ключ не матчит агент-слот
+    # (agent != human), агент-ключ блокируется. Гейт в компиляторе (choke point) не обходим (Кими, ход 1).
+    if user_override and key["reader_meta_class"] == "human":
         chosen.append({"name": "user", "kind": "user", "data": user_override})
     return chosen, refs
 

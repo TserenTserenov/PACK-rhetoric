@@ -1,0 +1,24 @@
+# Платформенные пресеты тона (WP-412 Ф7). see DP.SC.175.
+# Пресет = именованный пучок 4 тоновых осей (LS.D.002): формальность/юмор/уважительность/энтузиазм.
+# Значения в [-2, +2]. Пользователь выбирает пресет как базу, поверх — личные дельты.
+presets:
+  concise-technical:        # сухо, по делу
+    formality: 1
+    humor: -1
+    respectfulness: 0
+    enthusiasm: -1
+  warm-mentor:              # тёплый наставник
+    formality: -1
+    humor: 0
+    respectfulness: 2
+    enthusiasm: 1
+  neutral:                  # ровный нейтральный (дефолт)
+    formality: 0
+    humor: 0
+    respectfulness: 0
+    enthusiasm: 0
+  playful:                  # живой, с юмором
+    formality: -1
+    humor: 2
+    respectfulness: 0
+    enthusiasm: 1
