@@ -1,0 +1,4 @@
+# Derived build-cache компилятора (вариант A′). НЕ коммитится: пересобирается из source.
+# Аналогия: node_modules. Коммитим только registry-manifest.lock (как package-lock).
+compiled/
+__pycache__/

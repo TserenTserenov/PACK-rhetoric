@@ -1,0 +1,6 @@
+# Карта владельцев контента (see DP.SC.173, peer-session 2026-06-11-31 вариант A′).
+# content_source_id → путь к файлу-владельцу правил, относительно корня workspace ~/IWE.
+# Локальная сосед-резолюция: оба пака — соседи под ~/IWE, оба на диске в Ф5/Ф6.
+# Облачная резолюция (когда соседнего пака нет) вынесена за скоуп Ф5 → Ф10 (split платформа/IWE).
+DP.SC.050: PACK-digital-platform/pack/digital-platform/02-domain-entities/communication-style-base.md
+DP.SC.172: PACK-digital-platform/pack/digital-platform/02-domain-entities/engineering-code-style-base.md

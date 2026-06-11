@@ -1,0 +1,25 @@
+# AUTO-GENERATED (registry-manifest.lock) — коммитится как package-lock.
+# Перегенерация: python3 compiler.py lock. Проверка: python3 compiler.py verify.
+manifest_hash: 426f45eed34d960d3a08650fbb29e4764d097ef2d71e831ad5cfdb44a8f7e03f
+sources:
+- id: content:DP.SC.050
+  path: PACK-digital-platform/pack/digital-platform/02-domain-entities/communication-style-base.md
+  sha256: a4c9cdcca516630546bfdcc1c668102a9b53739a52fc5bfa004809ddc1bf37e0
+- id: content:DP.SC.172
+  path: PACK-digital-platform/pack/digital-platform/02-domain-entities/engineering-code-style-base.md
+  sha256: ef4cc7dda84df16ccc00a5ff6f4dddf4fef28c1702924914711d46d47d033695
+- id: overlay:domain:overlays/domain/personal-development.yaml
+  path: PACK-rhetoric/pack/language-style/overlays/domain/personal-development.yaml
+  sha256: 5735b2fbc64d09e86d410868c1fa24268522b1a3a01bd14b73d8918a39422dd2
+- id: overlay:market:overlays/market/ru.yaml
+  path: PACK-rhetoric/pack/language-style/overlays/market/ru.yaml
+  sha256: 450ff5b929dfc16636fde4a8a023d1184c0f197ff3ed15b20317a6e8b284db66
+- id: slot:05-formalizations/LS.FORM.000-register-base.ru.md
+  path: PACK-rhetoric/pack/language-style/05-formalizations/LS.FORM.000-register-base.ru.md
+  sha256: 8077ee2341eb0ad384aa20e3409aa1e7097efcf68bcecb3547f5da4af6527874
+- id: slot:05-formalizations/LS.FORM.001-register-pilot-ide.ru.md
+  path: PACK-rhetoric/pack/language-style/05-formalizations/LS.FORM.001-register-pilot-ide.ru.md
+  sha256: 03ed3093cf994e0981e74fc5a929d7dc847a9a16f3477f824ace1050c8b57093
+- id: slot:05-formalizations/LS.FORM.002-register-code-developer.ru.md
+  path: PACK-rhetoric/pack/language-style/05-formalizations/LS.FORM.002-register-code-developer.ru.md
+  sha256: bd3775c73956408aeca1f6ef46db47cf71e067ecf004cd73bbe6309a4e09e312

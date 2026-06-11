@@ -1,0 +1,14 @@
+# Рыночное наложение: Россия (overlay/market)
+# see LS.OVL.market, DP.SC.173. Слой каскада base → domain → [market] → user (most-specific-last).
+# Меняет ДЛЯ КОГО (сегмент аудитории) + канально-условные правки. НЕ выбирает канал.
+market: ru
+audience_segment: novice
+# Правки тона под сегмент (поверх голоса агента).
+tone_overrides:
+  formality: +1
+  enthusiasm: 0
+# Канально-условные правки: «для RU-рынка в этом канале — такой тон».
+# Это НЕ выбор канала (рантайм-факт интерфейса), а условие применения правки.
+channel_conditional:
+  telegram:
+    note: "регуляторно-аккуратный тон для RU-рынка"

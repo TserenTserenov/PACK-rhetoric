@@ -1,0 +1,19 @@
+# Доменное наложение: личное развитие (overlay/domain)
+# see LS.OVL.domain, DP.SC.173. Слой каскада base → [domain] → market → user.
+# Меняет ЧТО говорим (предметная лексика поля). Не свой словарь — ссылки на граф понятий WP-415.
+domain: personal-development
+# Ссылки на узлы графа понятий (RU/EN-пары живут там, здесь не дублируются — OwnerIntegrity).
+concepts:
+  - cp.rhy
+  - cp.wld
+  - cp.skl
+# Термины домена, допустимые без перевода в этом поле.
+jargon_whitelist:
+  - ступень
+  - bottleneck
+  - cp-профиль
+# Применимость наложения по осям регистра (к каким слотам домешивается).
+# Доменная лексика релевантна разговорному регистру, не инженерному коду.
+applies_to:
+  reader_role: [pilot, novice, student]
+  channel: [ide, telegram, browser]

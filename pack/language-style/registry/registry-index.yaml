@@ -1,0 +1,20 @@
+# Реестр языковых стилей — индекс (see DP.SC.173, DP.ROLE.073).
+# Тонкая карта: список слот-файлов + наложений. Ключ контекста и content_source
+# компилятор читает из frontmatter каждого слота (не дублируется здесь — OwnerIntegrity).
+# Пути относительно директории пака language-style (родитель registry/).
+version: 1
+
+# Слот, отдаваемый при промахе ключа (режим отказа DP.SC.173). В обычный lookup не входит.
+fallback: LS.FORM.000
+
+slots:
+  - 05-formalizations/LS.FORM.000-register-base.ru.md
+  - 05-formalizations/LS.FORM.001-register-pilot-ide.ru.md
+  - 05-formalizations/LS.FORM.002-register-code-developer.ru.md
+
+# Кросс-осевые слои каскада (base → domain → market → user). user-слой передаётся в рантайме.
+overlays:
+  domain:
+    - overlays/domain/personal-development.yaml
+  market:
+    - overlays/market/ru.yaml
