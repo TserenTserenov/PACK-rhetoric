@@ -40,7 +40,7 @@ WILDCARD = "*"
 AXES = ("reader_meta_class", "reader_role", "channel", "domain")
 # Бамп при изменении логики материализации/каскада: инвалидирует derived-кэш даже если
 # источники не менялись (manifest_hash один, а выход компилятора другой).
-COMPILER_VERSION = "f8.2"
+COMPILER_VERSION = "f8.3"
 
 
 def find_iwe_root(start: Path) -> Path:
@@ -263,8 +263,9 @@ def select_overlays(index: dict, slot: Slot, key: dict, user_override: dict):
     return chosen, refs
 
 
-def render_overlay(name: str, data: dict) -> str:
-    """Человекочитаемая добавка фрагмента от data-наложения (domain/market/user)."""
+def render_overlay(name: str, data: dict, channel: str | None = None) -> str:
+    """Человекочитаемая добавка фрагмента от data-наложения (domain/market/user).
+    channel — активный канал из ключа (для канально-условных правок рынка)."""
     if name.startswith("domain:"):
         jargon = ", ".join(data.get("jargon_whitelist", [])) or "—"
         concepts = ", ".join(data.get("concepts", [])) or "—"
@@ -275,8 +276,14 @@ def render_overlay(name: str, data: dict) -> str:
         seg = data.get("audience_segment", "—")
         tone = ", ".join(f"{k} {v:+d}" if isinstance(v, int) else f"{k} {v}"
                          for k, v in data.get("tone_overrides", {}).items()) or "—"
-        return (f"\n\n## Рынок: {data['market']} (сегмент: {seg})\n"
-                f"Правки тона: {tone}.")
+        out = (f"\n\n## Рынок: {data['market']} (сегмент: {seg})\n"
+               f"Правки тона: {tone}.")
+        # Канально-условная правка: только для активного канала (не wildcard), поле опционально (Кими-guardrail).
+        # Инвариант Ф1 цел: наложение ЧИТАЕТ канал как условие, не выбирает его.
+        conditional = data.get("channel_conditional", {})
+        if channel and channel != WILDCARD and channel in conditional:
+            out += f"\nКанально-условно ({channel}): {conditional[channel].get('note', '')}"
+        return out
     if name.startswith("genre:"):
         secs = "\n".join(f"- {s.get('label', '?')}: {s.get('desc', '—')}" for s in data.get("sections", []))
         return f"\n\n## Жанр: {data['genre']}\nСтруктура документа:\n{secs}"
@@ -374,7 +381,7 @@ def compile_key(context_key: dict, user_override: dict | None = None, use_cache:
             parts.append(f"\n\n{body}")
             refs.append(cref)
         else:
-            parts.append(render_overlay(ov["name"], ov["data"]))
+            parts.append(render_overlay(ov["name"], ov["data"], key["channel"]))
     fragment = "".join(parts)
 
     result = CompiledResult(

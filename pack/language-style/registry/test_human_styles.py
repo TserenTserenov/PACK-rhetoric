@@ -75,6 +75,32 @@ class TestAudienceMarketOverlay(unittest.TestCase):
         self.assertIn("Рынок: systems-thinkers", res.fragment)
 
 
+class TestChannelConditional(unittest.TestCase):
+    """Канально-условные правки рынка доходят до фрагмента (хвост WP-412)."""
+
+    def test_telegram_gets_channel_conditional(self):
+        res = compiler.compile_key(
+            {"reader_meta_class": "human", "reader_role": "novice", "channel": "telegram",
+             "domain": "*", "market": "ru"}, use_cache=False)
+        self.assertIn("market:ru", res.applied_layers)
+        self.assertIn("Канально-условно (telegram)", res.fragment)
+
+    def test_ide_no_channel_conditional(self):
+        # рынок ru применяется, но для канала ide нет канально-условной записи → ничего
+        res = compiler.compile_key(
+            {"reader_meta_class": "human", "reader_role": "pilot", "channel": "ide",
+             "domain": "*", "market": "ru"}, use_cache=False)
+        self.assertIn("market:ru", res.applied_layers)
+        self.assertNotIn("Канально-условно", res.fragment)
+
+    def test_wildcard_channel_no_conditional(self):
+        # guardrail: channel="*" (не активный канал) не триггерит канально-условную правку
+        res = compiler.compile_key(
+            {"reader_meta_class": "human", "reader_role": "pilot", "channel": "*",
+             "domain": "*", "market": "ru"}, use_cache=False)
+        self.assertNotIn("Канально-условно", res.fragment)
+
+
 class TestGenreTemplates(unittest.TestCase):
     def test_ru_is_canon(self):
         for genre in ("post", "guide"):
