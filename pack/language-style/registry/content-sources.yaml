@@ -7,3 +7,5 @@ DP.SC.172: PACK-digital-platform/pack/digital-platform/02-domain-entities/engine
 # Владельцы авторского слоя L1 (Ф6) — третий репо, DS-my-strategy/memory. additive-only поверх L0.
 L1.communication: DS-my-strategy/memory/communication-style-author.md
 L1.code-style: DS-my-strategy/memory/code-style-author.md
+# Агент-агентный стиль (Ф8) — владелец в паке языковых стилей (граница поле↔стиль, §5).
+LS.agent-agent: PACK-rhetoric/pack/language-style/02-domain-entities/LS.D.003-agent-agent-style.md

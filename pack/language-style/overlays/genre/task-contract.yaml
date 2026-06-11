@@ -1,0 +1,17 @@
+# Жанровое наложение: контракт задачи. see LS.SOTA.002 §4, peer-сессия 2026-06-11-35.
+# data-bearing: те же ярлыки секций, что у handoff, но другой смысл по жанру (Кими, ход 3).
+overlay_class: genre
+overlay_type: data
+genre: task-contract
+sections:
+  - label: FACT
+    desc: "входные данные и контекст"
+  - label: TODO
+    desc: "требуемый результат (deliverable)"
+  - label: BLOCKER
+    desc: "ограничения и инварианты"
+  - label: ACCEPTED
+    desc: "критерии приёмки"
+applies_to:
+  reader_role: [executor]
+  channel: [task-contract]

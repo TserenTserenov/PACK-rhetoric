@@ -24,9 +24,16 @@ import compiler
 # Таблица «событие интерфейса → плоские оси context_key». Рантайм-проводка, не стиль.
 # Канал — ось ключа (выбирает слот), задаётся событием. domain/market достраиваются ниже.
 EVENT_KEYS = {
+    # человек-читатель
     "userpromptsubmit-ide": {"reader_meta_class": "human", "reader_role": "pilot", "channel": "ide"},
     "pretooluse-edit": {"reader_meta_class": "human", "reader_role": "developer", "channel": "code"},
     "bot-telegram": {"reader_meta_class": "human", "reader_role": "novice", "channel": "telegram"},
+    # агент-читатель (Ф8): peer-сессия, передача дел, контракт задачи, коммит, PR
+    "peer-turn": {"reader_meta_class": "agent", "reader_role": "peer", "channel": "transcript"},
+    "handoff": {"reader_meta_class": "agent", "reader_role": "executor", "channel": "handoff"},
+    "task-contract": {"reader_meta_class": "agent", "reader_role": "executor", "channel": "task-contract"},
+    "commit-msg": {"reader_meta_class": "agent", "reader_role": "executor", "channel": "commit"},
+    "pr-desc": {"reader_meta_class": "agent", "reader_role": "executor", "channel": "pr"},
 }
 
 

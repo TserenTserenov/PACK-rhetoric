@@ -40,7 +40,7 @@ WILDCARD = "*"
 AXES = ("reader_meta_class", "reader_role", "channel", "domain")
 # Бамп при изменении логики материализации/каскада: инвалидирует derived-кэш даже если
 # источники не менялись (manifest_hash один, а выход компилятора другой).
-COMPILER_VERSION = "f6.1"
+COMPILER_VERSION = "f8.1"
 
 
 def find_iwe_root(start: Path) -> Path:
@@ -215,9 +215,9 @@ def domain_applies(ov: dict, slot: Slot, key: dict) -> bool:
 
 
 def select_overlays(index: dict, slot: Slot, key: dict, user_override: dict):
-    """Выбрать применимые наложения в порядке каскада base→domain→market→author→user.
+    """Выбрать применимые наложения в порядке каскада base→domain→market→genre→author→user.
     Возвращает (список descriptor'ов {name, kind, data}, refs по overlay-файлам).
-    kind: 'data' (domain/market — render структуры) | 'content' (author — materialize владельца) | 'user'."""
+    kind: 'data' (domain/market/genre — render структуры) | 'content' (author — materialize владельца) | 'user'."""
     chosen, refs = [], []
     overlays = index.get("overlays", {})
     for rel in overlays.get("domain", []):
@@ -234,6 +234,15 @@ def select_overlays(index: dict, slot: Slot, key: dict, user_override: dict):
             if data.get("market") == market:
                 chosen.append({"name": f"market:{data['market']}", "kind": "data", "data": data})
                 refs.append({"source_id": f"overlay:market:{data['market']}", "source_hash": sha256_file(path)})
+    # genre — data-bearing структура документа (секции FACT/TODO/...), выбор по applies_to роль/канал.
+    # Жанр — примитив Ф1 (различение 5), отдельный слой каскада перед author. Опционален.
+    for rel in overlays.get("genre", []):
+        path = PACK_DIR / rel
+        data = yaml.safe_load(path.read_text("utf-8"))
+        gate = data.get("applies_to", {})
+        if gate and applies_to_gate(gate, slot):
+            chosen.append({"name": f"genre:{data['genre']}", "kind": "data", "data": data})
+            refs.append({"source_id": f"overlay:genre:{data['genre']}", "source_hash": sha256_file(path)})
     # author — content-bearing слой L1, опционален: applies_to не матчит → пропускаем без ошибки.
     # author БЕЗ applies_to НЕ применяется: иначе он подмешался бы к fallback-полу (role=*) и
     # загрязнил режим отказа. author обязан быть таргетирован на регистр (защита инварианта fallback).
@@ -263,6 +272,9 @@ def render_overlay(name: str, data: dict) -> str:
                          for k, v in data.get("tone_overrides", {}).items()) or "—"
         return (f"\n\n## Рынок: {data['market']} (сегмент: {seg})\n"
                 f"Правки тона: {tone}.")
+    if name.startswith("genre:"):
+        secs = "\n".join(f"- {s.get('label', '?')}: {s.get('desc', '—')}" for s in data.get("sections", []))
+        return f"\n\n## Жанр: {data['genre']}\nСтруктура документа:\n{secs}"
     # user
     note = data.get("note", "пользовательские правки стиля")
     return f"\n\n## Пользовательский оверрайд\n{note}."

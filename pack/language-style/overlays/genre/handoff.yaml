@@ -1,0 +1,19 @@
+# Жанровое наложение: handoff. see LS.SOTA.002 §4, peer-сессия 2026-06-11-35.
+# data-bearing: секции структуры документа (жанр), компилятор их render. Слой каскада перед author.
+# Секции кодируют речевую силу структурно (FACT=assert, TODO=request, BLOCKER=эскалация, ACCEPTED=commit)
+# → performatives как ось стиля не нужны (поглощены жанром).
+overlay_class: genre
+overlay_type: data
+genre: handoff
+sections:
+  - label: FACT
+    desc: "текущее состояние (факты, не план)"
+  - label: TODO
+    desc: "следующие шаги для принимающего агента"
+  - label: BLOCKER
+    desc: "препятствия и эскалации"
+  - label: ACCEPTED
+    desc: "уже зафиксированные договорённости"
+applies_to:
+  reader_role: [executor]
+  channel: [handoff]

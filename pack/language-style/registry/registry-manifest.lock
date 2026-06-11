@@ -1,6 +1,6 @@
 # AUTO-GENERATED (registry-manifest.lock) — коммитится как package-lock.
 # Перегенерация: python3 compiler.py lock. Проверка: python3 compiler.py verify.
-manifest_hash: ab4bfa7c2aa20be52db7f9d0e9d11c91c78091107a227a5d8414a338fe619e74
+manifest_hash: 95269a5c14cd428fcb928938efb702ed86cedc2313ae5e128ad5c81c39087c86
 sources:
 - id: content:DP.SC.050
   path: PACK-digital-platform/pack/digital-platform/02-domain-entities/communication-style-base.md
@@ -14,6 +14,9 @@ sources:
 - id: content:L1.communication
   path: DS-my-strategy/memory/communication-style-author.md
   sha256: 5053545604c20c1473d383bee62dbec0cda6f0ee15150eddb37e5c2fb9d13058
+- id: content:LS.agent-agent
+  path: PACK-rhetoric/pack/language-style/02-domain-entities/LS.D.003-agent-agent-style.md
+  sha256: 1966a40ed8d8ae27a24b417b20c7582878a26f5be2d8b527fa3403b2e7d5cf1c
 - id: overlay:author:overlays/author/code.yaml
   path: PACK-rhetoric/pack/language-style/overlays/author/code.yaml
   sha256: 31f4e46da1ead93ca2afcac01ebb2ed9a60be6f09c37a75482422c94a7cd35e1
@@ -23,6 +26,12 @@ sources:
 - id: overlay:domain:overlays/domain/personal-development.yaml
   path: PACK-rhetoric/pack/language-style/overlays/domain/personal-development.yaml
   sha256: 5735b2fbc64d09e86d410868c1fa24268522b1a3a01bd14b73d8918a39422dd2
+- id: overlay:genre:overlays/genre/handoff.yaml
+  path: PACK-rhetoric/pack/language-style/overlays/genre/handoff.yaml
+  sha256: a368dfcaf18f7607b6931c2bf0dca6adc146c9ef7689d9ad287955ff975b2214
+- id: overlay:genre:overlays/genre/task-contract.yaml
+  path: PACK-rhetoric/pack/language-style/overlays/genre/task-contract.yaml
+  sha256: ab8221229a2355e0f3bc151d5a77d6de48ee8100756e6d7db9a976d3fd54a3d7
 - id: overlay:market:overlays/market/ru.yaml
   path: PACK-rhetoric/pack/language-style/overlays/market/ru.yaml
   sha256: 450ff5b929dfc16636fde4a8a023d1184c0f197ff3ed15b20317a6e8b284db66
@@ -35,3 +44,18 @@ sources:
 - id: slot:05-formalizations/LS.FORM.002-register-code-developer.ru.md
   path: PACK-rhetoric/pack/language-style/05-formalizations/LS.FORM.002-register-code-developer.ru.md
   sha256: bd3775c73956408aeca1f6ef46db47cf71e067ecf004cd73bbe6309a4e09e312
+- id: slot:05-formalizations/LS.FORM.003-register-peer-transcript.ru.md
+  path: PACK-rhetoric/pack/language-style/05-formalizations/LS.FORM.003-register-peer-transcript.ru.md
+  sha256: aa3b6dc6ef51a3de84b0161a7ddd6f4f42f9f6ceaa176f8ae0dd36015eee62f5
+- id: slot:05-formalizations/LS.FORM.004-register-handoff.ru.md
+  path: PACK-rhetoric/pack/language-style/05-formalizations/LS.FORM.004-register-handoff.ru.md
+  sha256: edfd840f902d98bf070b8337a7ba72dfde97fb8010fa9d0d09ee6d9fff3d211a
+- id: slot:05-formalizations/LS.FORM.005-register-task-contract.ru.md
+  path: PACK-rhetoric/pack/language-style/05-formalizations/LS.FORM.005-register-task-contract.ru.md
+  sha256: cf381f2a6579773962b2e0f4553d80ceca89dd92779e24cb852942ff96468d0c
+- id: slot:05-formalizations/LS.FORM.006-register-commit.ru.md
+  path: PACK-rhetoric/pack/language-style/05-formalizations/LS.FORM.006-register-commit.ru.md
+  sha256: 21fe030cc1f6bd4693306693be795bf722e08330959b4795afaae3cb11ea5b73
+- id: slot:05-formalizations/LS.FORM.007-register-pr.ru.md
+  path: PACK-rhetoric/pack/language-style/05-formalizations/LS.FORM.007-register-pr.ru.md
+  sha256: 95a56e0702db86581dcb44fe5859209dbd83b06b9aeefd5969625988ed435963
