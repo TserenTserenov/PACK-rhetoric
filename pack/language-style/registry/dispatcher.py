@@ -28,6 +28,7 @@ EVENT_KEYS = {
     "userpromptsubmit-ide": {"reader_meta_class": "human", "reader_role": "pilot", "channel": "ide"},
     "pretooluse-edit": {"reader_meta_class": "human", "reader_role": "developer", "channel": "code"},
     "bot-telegram": {"reader_meta_class": "human", "reader_role": "novice", "channel": "telegram"},
+    "browser": {"reader_meta_class": "human", "reader_role": "pilot", "channel": "browser"},  # Ф9
     # агент-читатель (Ф8): peer-сессия, передача дел, контракт задачи, коммит, PR
     "peer-turn": {"reader_meta_class": "agent", "reader_role": "peer", "channel": "transcript"},
     "handoff": {"reader_meta_class": "agent", "reader_role": "executor", "channel": "handoff"},

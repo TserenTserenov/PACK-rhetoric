@@ -17,6 +17,11 @@ slots:
   - 05-formalizations/LS.FORM.005-register-task-contract.ru.md
   - 05-formalizations/LS.FORM.006-register-commit.ru.md
   - 05-formalizations/LS.FORM.007-register-pr.ru.md
+  # Человеко-стили (Ф9): пост, универсальное руководство, Telegram, браузер.
+  - 05-formalizations/LS.FORM.008-register-post.ru.md
+  - 05-formalizations/LS.FORM.009-register-guide-universal.ru.md
+  - 05-formalizations/LS.FORM.010-register-telegram.ru.md
+  - 05-formalizations/LS.FORM.011-register-browser.ru.md
 
 # Кросс-осевые слои каскада (base → domain → market → genre → author → user). user — в рантайме.
 # Порядок классов здесь = порядок каскада. genre/author — content/data наложения по applies_to.
@@ -25,6 +30,7 @@ overlays:
     - overlays/domain/personal-development.yaml
   market:
     - overlays/market/ru.yaml
+    - overlays/market/audience-systems-thinkers.yaml
   genre:
     - overlays/genre/handoff.yaml
     - overlays/genre/task-contract.yaml

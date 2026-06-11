@@ -1,6 +1,6 @@
 # AUTO-GENERATED (registry-manifest.lock) — коммитится как package-lock.
 # Перегенерация: python3 compiler.py lock. Проверка: python3 compiler.py verify.
-manifest_hash: 95269a5c14cd428fcb928938efb702ed86cedc2313ae5e128ad5c81c39087c86
+manifest_hash: 9d3ef6700a1931255841e531b6a9c205ffc5383e189325420c317ae7646ecb56
 sources:
 - id: content:DP.SC.050
   path: PACK-digital-platform/pack/digital-platform/02-domain-entities/communication-style-base.md
@@ -14,6 +14,9 @@ sources:
 - id: content:L1.communication
   path: DS-my-strategy/memory/communication-style-author.md
   sha256: 5053545604c20c1473d383bee62dbec0cda6f0ee15150eddb37e5c2fb9d13058
+- id: content:LS.academic-guide
+  path: PACK-rhetoric/pack/language-style/02-domain-entities/LS.D.004-academic-guide-style.md
+  sha256: 9744c8c209940afeff006a96cc2a017ca5f08164d3cbef74379fe761abf7759c
 - id: content:LS.agent-agent
   path: PACK-rhetoric/pack/language-style/02-domain-entities/LS.D.003-agent-agent-style.md
   sha256: 1966a40ed8d8ae27a24b417b20c7582878a26f5be2d8b527fa3403b2e7d5cf1c
@@ -22,7 +25,7 @@ sources:
   sha256: 31f4e46da1ead93ca2afcac01ebb2ed9a60be6f09c37a75482422c94a7cd35e1
 - id: overlay:author:overlays/author/conversational.yaml
   path: PACK-rhetoric/pack/language-style/overlays/author/conversational.yaml
-  sha256: d5c30022bf57da6728eff556eec0e97434c83270024e519f0d9bca8e32997b84
+  sha256: beac38d24bdaa1946625bcf172577b95229b3ad96e31ab2348b7914aa6f3d6af
 - id: overlay:domain:overlays/domain/personal-development.yaml
   path: PACK-rhetoric/pack/language-style/overlays/domain/personal-development.yaml
   sha256: 5735b2fbc64d09e86d410868c1fa24268522b1a3a01bd14b73d8918a39422dd2
@@ -32,6 +35,9 @@ sources:
 - id: overlay:genre:overlays/genre/task-contract.yaml
   path: PACK-rhetoric/pack/language-style/overlays/genre/task-contract.yaml
   sha256: ab8221229a2355e0f3bc151d5a77d6de48ee8100756e6d7db9a976d3fd54a3d7
+- id: overlay:market:overlays/market/audience-systems-thinkers.yaml
+  path: PACK-rhetoric/pack/language-style/overlays/market/audience-systems-thinkers.yaml
+  sha256: 7223e956c52e3c1fdfc89916f116cd205372dee862be86faece65b6f0bb671e0
 - id: overlay:market:overlays/market/ru.yaml
   path: PACK-rhetoric/pack/language-style/overlays/market/ru.yaml
   sha256: 450ff5b929dfc16636fde4a8a023d1184c0f197ff3ed15b20317a6e8b284db66
@@ -59,3 +65,15 @@ sources:
 - id: slot:05-formalizations/LS.FORM.007-register-pr.ru.md
   path: PACK-rhetoric/pack/language-style/05-formalizations/LS.FORM.007-register-pr.ru.md
   sha256: 95a56e0702db86581dcb44fe5859209dbd83b06b9aeefd5969625988ed435963
+- id: slot:05-formalizations/LS.FORM.008-register-post.ru.md
+  path: PACK-rhetoric/pack/language-style/05-formalizations/LS.FORM.008-register-post.ru.md
+  sha256: 6832305d26176b2da439a0de80897bc6a7697a55d1c253aa65ab35f32d56c8e1
+- id: slot:05-formalizations/LS.FORM.009-register-guide-universal.ru.md
+  path: PACK-rhetoric/pack/language-style/05-formalizations/LS.FORM.009-register-guide-universal.ru.md
+  sha256: 7e05ce26cd8ed9fad138bcfe7219d2a7bf9347fc2d785a4e1e6c9aa1fbc86772
+- id: slot:05-formalizations/LS.FORM.010-register-telegram.ru.md
+  path: PACK-rhetoric/pack/language-style/05-formalizations/LS.FORM.010-register-telegram.ru.md
+  sha256: e67fe0660a8d65e3d31dece0a8280631786c74220d374c3e88be39fef1fa738c
+- id: slot:05-formalizations/LS.FORM.011-register-browser.ru.md
+  path: PACK-rhetoric/pack/language-style/05-formalizations/LS.FORM.011-register-browser.ru.md
+  sha256: 17dbbcdedab1708467988dd3cf774edf4638000fb83116f839f79016f4ffec7c

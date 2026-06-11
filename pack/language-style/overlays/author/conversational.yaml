@@ -4,6 +4,9 @@
 overlay_class: author
 overlay_type: content
 content_source: L1.communication   # DS-my-strategy/memory/communication-style-author.md
+# Тир совместности (WP-415): личный L1 автора — только в ЛИЧНЫХ каналах пилота (ide, browser).
+# НЕ в telegram (мультитенантный бот, обслуживает новичков) и НЕ для ролей novice/student —
+# личный артефакт не течёт в мультитенантный сервисный канал. Сужено в Ф9 (тир-утечка от слотов Ф9).
 applies_to:
-  reader_role: [pilot, novice, student]
-  channel: [ide, telegram, browser]
+  reader_role: [pilot]
+  channel: [ide, browser]

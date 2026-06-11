@@ -1,0 +1,13 @@
+# Рыночное наложение: целевая аудитория «системные мыслители» (пример ЦА, Ф9).
+# see LS.OVL.market. ЦА = тон-пресет под сегмент аудитории, НЕ отдельный стиль (peer-сессия 2026-06-11-37).
+# Накладывается на регистр поста/руководства, когда market=systems-thinkers.
+market: systems-thinkers
+audience_segment: practitioner
+tone_overrides:
+  formality: +1
+  enthusiasm: 0
+jargon_whitelist:           # термины, которые эта ЦА употребляет сама → без перевода
+  - система
+  - роль
+  - метод
+  - граница
