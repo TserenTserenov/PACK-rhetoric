@@ -65,9 +65,13 @@ def main() -> int:
     ap.add_argument("--domain", default="*")
     ap.add_argument("--market", default=None)
     ap.add_argument("--no-cache", action="store_true")
+    ap.add_argument("--quiet", action="store_true", help="печатать только фрагмент (для тонких хуков Ф6)")
     args = ap.parse_args()
 
     res = dispatch(args.event, args.domain, args.market, use_cache=not args.no_cache)
+    if args.quiet:
+        print(res.fragment)
+        return 0
     print(f"# event={args.event} key_hash={res.key_hash[:12]} fallback_used={res.fallback_used}")
     print(f"# applied_layers={res.applied_layers}")
     print(f"# source_refs={[r['source_id'] for r in res.source_refs]}")
