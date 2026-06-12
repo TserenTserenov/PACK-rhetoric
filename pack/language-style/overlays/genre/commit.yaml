@@ -1,0 +1,16 @@
+# Жанровое наложение: коммит-сообщение (лёгкий вариант, peer-сессия 2026-06-12-02).
+# Конвенция git-соцпрактики (Ф1 различение 5: жанр = примитив второго порядка).
+# Минимальные секции; расширение до полного conventional-commits — по запросу, не впрок.
+overlay_class: genre
+overlay_type: data
+genre: commit
+sections:
+  - label: SUBJECT
+    desc: "type(scope): что изменилось — ≤72 символа, императив"
+  - label: BODY
+    desc: "зачем (мотив изменения), не пересказ диффа"
+  - label: REFS
+    desc: "ссылки: РП, peer-сессия, issue"
+applies_to:
+  reader_role: [executor]
+  channel: [commit]

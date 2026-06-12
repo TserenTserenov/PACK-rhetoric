@@ -40,7 +40,7 @@ WILDCARD = "*"
 AXES = ("reader_meta_class", "reader_role", "channel", "domain")
 # Бамп при изменении логики материализации/каскада: инвалидирует derived-кэш даже если
 # источники не менялись (manifest_hash один, а выход компилятора другой).
-COMPILER_VERSION = "f8.3"
+COMPILER_VERSION = "f8.4"
 
 
 def find_iwe_root(start: Path) -> Path:
@@ -231,9 +231,16 @@ def select_overlays(index: dict, slot: Slot, key: dict, user_override: dict):
         for rel in overlays.get("market", []):
             path = PACK_DIR / rel
             data = yaml.safe_load(path.read_text("utf-8"))
-            if data.get("market") == market:
-                chosen.append({"name": f"market:{data['market']}", "kind": "data", "data": data})
-                refs.append({"source_id": f"overlay:market:{data['market']}", "source_hash": sha256_file(path)})
+            if data.get("market") != market:
+                continue
+            # Канальный gate рыночного наложения — по ЗАПРОШЕННОМУ key["channel"] (рантайм-факт
+            # интерфейса, Ф1), не по слоту: ЦА-сегмент бессмыслен вне исходящего контента.
+            # Без applies_to ветка работает как раньше (ru.yaml не затронут).
+            m_gate = data.get("applies_to", {})
+            if "channel" in m_gate and key.get("channel") not in m_gate["channel"]:
+                continue
+            chosen.append({"name": f"market:{data['market']}", "kind": "data", "data": data})
+            refs.append({"source_id": f"overlay:market:{data['market']}", "source_hash": sha256_file(path)})
     # genre — data-bearing структура документа (секции FACT/TODO/...), выбор по applies_to роль/канал.
     # Жанр — примитив Ф1 (различение 5), отдельный слой каскада перед author. Опционален.
     for rel in overlays.get("genre", []):
@@ -321,6 +328,10 @@ def all_source_paths(index: dict, content_sources: dict) -> list[tuple[str, Path
     for cls, rels in index.get("overlays", {}).items():
         for rel in rels:
             items.append((f"overlay:{cls}:{rel}", PACK_DIR / rel))
+    # extra — источники вне каскада, но влияющие на систему (presets, genre-template):
+    # участвуют только в манифесте/verify (freshness-сигнал), компиляция их не читает.
+    for sid, rel in index.get("extra_sources", {}).items():
+        items.append((f"extra:{sid}", PACK_DIR / rel))
     return items
 
 
@@ -405,6 +416,12 @@ def write_lock() -> dict:
     index = load_index()
     content_sources = load_content_sources()
     manifest = compute_manifest(index, content_sources)
+    # Guard (review 2026-06-12-02): lock с MISSING заморозил бы пропажу файла навсегда —
+    # verify стал бы вечно зелёным при отсутствующем источнике (extra-источники компиляция
+    # не читает, сама не упадёт). Лучше громкий отказ здесь.
+    missing = [s["id"] for s in manifest["sources"] if s["sha256"] == "MISSING"]
+    if missing:
+        raise SystemExit(f"lock отклонён — источники не найдены на диске: {', '.join(missing)}")
     LOCK_PATH.write_text(
         "# AUTO-GENERATED (registry-manifest.lock) — коммитится как package-lock.\n"
         "# Перегенерация: python3 compiler.py lock. Проверка: python3 compiler.py verify.\n"

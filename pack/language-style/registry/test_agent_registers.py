@@ -50,10 +50,10 @@ class TestGenreSections(unittest.TestCase):
         self.assertIn("входные данные", contract)          # task-contract FACT
         self.assertNotIn("входные данные", handoff)
 
-    def test_commit_has_no_genre_overlay(self):
-        # для коммита/PR жанрового наложения нет (лёгкий вариант Ф8) → только база.
+    def test_commit_has_light_genre_overlay(self):
+        # лёгкий жанр коммита добавлен peer-сессией 2026-06-12-02 (был отложен в Ф8).
         res = dispatcher.dispatch("commit-msg", use_cache=False)
-        self.assertFalse(any(layer.startswith("genre:") for layer in res.applied_layers))
+        self.assertIn("genre:commit", res.applied_layers)
 
 
 class TestNoAuthorLeak(unittest.TestCase):

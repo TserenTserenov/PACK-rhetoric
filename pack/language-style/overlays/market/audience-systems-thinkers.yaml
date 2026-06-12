@@ -3,6 +3,10 @@
 # Накладывается на регистр поста/руководства, когда market=systems-thinkers.
 market: systems-thinkers
 audience_segment: practitioner
+# Канальный gate (peer-сессия 2026-06-12-02): ЦА-сегмент применяется только к исходящему
+# контенту. Gate по запрошенному key["channel"]; в ide-чате наложение НЕ применяется.
+applies_to:
+  channel: [post, guide]
 tone_overrides:
   formality: +1
   enthusiasm: 0

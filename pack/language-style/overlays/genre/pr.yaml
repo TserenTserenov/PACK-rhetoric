@@ -1,0 +1,16 @@
+# Жанровое наложение: Pull Request (лёгкий вариант, peer-сессия 2026-06-12-02).
+# Конвенция соцпрактики code-review (Ф1 различение 5: жанр = примитив второго порядка).
+# Жанр peer-стенограммы отклонён: структурой реплик владеет протокол DP.SC.154 (OwnerIntegrity).
+overlay_class: genre
+overlay_type: data
+genre: pr
+sections:
+  - label: WHAT
+    desc: "что меняется и зачем (эффект для потребителя)"
+  - label: VERIFY
+    desc: "как проверено: тесты, smoke, ручная проверка"
+  - label: RISK
+    desc: "риск + план отката"
+applies_to:
+  reader_role: [executor]
+  channel: [pr]

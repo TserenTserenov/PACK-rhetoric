@@ -1,6 +1,6 @@
 # AUTO-GENERATED (registry-manifest.lock) — коммитится как package-lock.
 # Перегенерация: python3 compiler.py lock. Проверка: python3 compiler.py verify.
-manifest_hash: 9d3ef6700a1931255841e531b6a9c205ffc5383e189325420c317ae7646ecb56
+manifest_hash: 0450f7990a4cc2950dd27c90ec80290d6f0194223561591dee2eb1a8f045d707
 sources:
 - id: content:DP.SC.050
   path: PACK-digital-platform/pack/digital-platform/02-domain-entities/communication-style-base.md
@@ -20,6 +20,21 @@ sources:
 - id: content:LS.agent-agent
   path: PACK-rhetoric/pack/language-style/02-domain-entities/LS.D.003-agent-agent-style.md
   sha256: 1966a40ed8d8ae27a24b417b20c7582878a26f5be2d8b527fa3403b2e7d5cf1c
+- id: extra:genre-template-en-guide
+  path: PACK-rhetoric/pack/language-style/genre-template/en/guide.md
+  sha256: 11974074513a494c78c36cbe111c76b8eea9de6e65d0ab6248c762773ffc85d0
+- id: extra:genre-template-en-post
+  path: PACK-rhetoric/pack/language-style/genre-template/en/post.md
+  sha256: 4ccffd78ce553979cb85d79bb7a058a694c431e07aba2a8f305747be264f4d73
+- id: extra:genre-template-ru-guide
+  path: PACK-rhetoric/pack/language-style/genre-template/ru/guide.md
+  sha256: aaba3a311f7965b74a1bf05680f417c64834c5794a7982c4b95bfbb9373e200e
+- id: extra:genre-template-ru-post
+  path: PACK-rhetoric/pack/language-style/genre-template/ru/post.md
+  sha256: 2131b0fd3a33bfa6ae0b02e6d677fcd1cfb457be7378059d2050edecd6dd6e09
+- id: extra:presets
+  path: PACK-rhetoric/pack/language-style/presets.yaml
+  sha256: 75dcba56d125a707a2849a575aa8c1b210c95d6d11d2c8083b583009aa13ce06
 - id: overlay:author:overlays/author/code.yaml
   path: PACK-rhetoric/pack/language-style/overlays/author/code.yaml
   sha256: 31f4e46da1ead93ca2afcac01ebb2ed9a60be6f09c37a75482422c94a7cd35e1
@@ -29,15 +44,21 @@ sources:
 - id: overlay:domain:overlays/domain/personal-development.yaml
   path: PACK-rhetoric/pack/language-style/overlays/domain/personal-development.yaml
   sha256: 5735b2fbc64d09e86d410868c1fa24268522b1a3a01bd14b73d8918a39422dd2
+- id: overlay:genre:overlays/genre/commit.yaml
+  path: PACK-rhetoric/pack/language-style/overlays/genre/commit.yaml
+  sha256: af2766fd9876e0abbe2a81243a59754efc54c849fab14f8edbc18183adb6692e
 - id: overlay:genre:overlays/genre/handoff.yaml
   path: PACK-rhetoric/pack/language-style/overlays/genre/handoff.yaml
   sha256: a368dfcaf18f7607b6931c2bf0dca6adc146c9ef7689d9ad287955ff975b2214
+- id: overlay:genre:overlays/genre/pr.yaml
+  path: PACK-rhetoric/pack/language-style/overlays/genre/pr.yaml
+  sha256: ff331bc98c4327ff88ae962d4a3f54f5df602ef2114d9753a5b6858e8ffa8acc
 - id: overlay:genre:overlays/genre/task-contract.yaml
   path: PACK-rhetoric/pack/language-style/overlays/genre/task-contract.yaml
   sha256: ab8221229a2355e0f3bc151d5a77d6de48ee8100756e6d7db9a976d3fd54a3d7
 - id: overlay:market:overlays/market/audience-systems-thinkers.yaml
   path: PACK-rhetoric/pack/language-style/overlays/market/audience-systems-thinkers.yaml
-  sha256: 7223e956c52e3c1fdfc89916f116cd205372dee862be86faece65b6f0bb671e0
+  sha256: 7b61d30dc111062f48684bc03e8289a0d9fd0a52cd68400b939b2d756f16068e
 - id: overlay:market:overlays/market/ru.yaml
   path: PACK-rhetoric/pack/language-style/overlays/market/ru.yaml
   sha256: 450ff5b929dfc16636fde4a8a023d1184c0f197ff3ed15b20317a6e8b284db66

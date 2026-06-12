@@ -34,6 +34,18 @@ overlays:
   genre:
     - overlays/genre/handoff.yaml
     - overlays/genre/task-contract.yaml
+    - overlays/genre/commit.yaml
+    - overlays/genre/pr.yaml
   author:
     - overlays/author/conversational.yaml
     - overlays/author/code.yaml
+
+# Источники вне каскада, влияющие на систему стилей: только манифест/verify (freshness),
+# компиляция их не читает. Чтением presets владеет style_selector.py (PRESETS_PATH).
+# Peer-сессия 2026-06-12-02: префикс extra: в id манифеста — namespace, не отдельный класс логики.
+extra_sources:
+  presets: presets.yaml
+  genre-template-ru-guide: genre-template/ru/guide.md
+  genre-template-ru-post: genre-template/ru/post.md
+  genre-template-en-guide: genre-template/en/guide.md
+  genre-template-en-post: genre-template/en/post.md
