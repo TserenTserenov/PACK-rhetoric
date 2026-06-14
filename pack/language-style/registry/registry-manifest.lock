@@ -1,6 +1,6 @@
 # AUTO-GENERATED (registry-manifest.lock) — коммитится как package-lock.
 # Перегенерация: python3 compiler.py lock. Проверка: python3 compiler.py verify.
-manifest_hash: 877fa3a98b9d07bd38d08e142e4c542530ada79744d01c7481bac02f5f810604
+manifest_hash: 9c5445c2214ce922089cdf22f0072adf8bbf8ae5a23d2499ce0e20b089dee444
 sources:
 - id: content:DP.SC.050
   path: PACK-digital-platform/pack/digital-platform/02-domain-entities/communication-style-base.md
@@ -70,7 +70,7 @@ sources:
   sha256: fcdf5c3a839f75818f4f4c7f650a85307a6ddf67bfe9f82d1a44eb2285d91d4e
 - id: slot:05-formalizations/LS.FORM.002-register-code-developer.ru.md
   path: PACK-rhetoric/pack/language-style/05-formalizations/LS.FORM.002-register-code-developer.ru.md
-  sha256: bd3775c73956408aeca1f6ef46db47cf71e067ecf004cd73bbe6309a4e09e312
+  sha256: 0f8da1a8da16992e9bce0e30b45bd4bdc3c6a06cd3dd17f783d213dc6dd43e1b
 - id: slot:05-formalizations/LS.FORM.003-register-peer-transcript.ru.md
   path: PACK-rhetoric/pack/language-style/05-formalizations/LS.FORM.003-register-peer-transcript.ru.md
   sha256: aa3b6dc6ef51a3de84b0161a7ddd6f4f42f9f6ceaa176f8ae0dd36015eee62f5
