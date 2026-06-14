@@ -1,19 +1,19 @@
 # AUTO-GENERATED (registry-manifest.lock) — коммитится как package-lock.
 # Перегенерация: python3 compiler.py lock. Проверка: python3 compiler.py verify.
-manifest_hash: ddef5f66ca14eb86454ee5a2c64feba8119ce760fa7460b204ae5a476f985a77
+manifest_hash: 877fa3a98b9d07bd38d08e142e4c542530ada79744d01c7481bac02f5f810604
 sources:
 - id: content:DP.SC.050
   path: PACK-digital-platform/pack/digital-platform/02-domain-entities/communication-style-base.md
-  sha256: 17d6292b636c8b6e4709d560b923fda91e2ee4c5d04421358792a615aacfddc2
+  sha256: e59fb9df0e4eaa07513a2812bc15e2d173b403f49cb7d32cc7530cedee58082f
 - id: content:DP.SC.172
   path: PACK-digital-platform/pack/digital-platform/02-domain-entities/engineering-code-style-base.md
-  sha256: 4555f252adf1974b6bce1a3e29fa69f8b880fa44f46daac11276c9a149beae1d
+  sha256: 074a3175013bc4cfac4ddb1c57bc7b2f89303f7fb767fd0e7fd7f090d239c278
 - id: content:L1.code-style
   path: DS-my-strategy/memory/code-style-author.md
   sha256: 6791805f55ecf87e5880c691bc9cba03b25e3bdd305c5e64ca4602ccb2cbea8e
 - id: content:L1.communication
   path: DS-my-strategy/memory/communication-style-author.md
-  sha256: a333f5da808bec039c49aa3f4e00169fbaa6401d7916946b7d949bfed4655478
+  sha256: c93673b8fea565543fae4b96bed39ada1453172ec4dfc85381acf70791a4da22
 - id: content:LS.academic-guide
   path: PACK-rhetoric/pack/language-style/02-domain-entities/LS.D.004-academic-guide-style.md
   sha256: 9744c8c209940afeff006a96cc2a017ca5f08164d3cbef74379fe761abf7759c
@@ -67,7 +67,7 @@ sources:
   sha256: 8077ee2341eb0ad384aa20e3409aa1e7097efcf68bcecb3547f5da4af6527874
 - id: slot:05-formalizations/LS.FORM.001-register-pilot-ide.ru.md
   path: PACK-rhetoric/pack/language-style/05-formalizations/LS.FORM.001-register-pilot-ide.ru.md
-  sha256: 03ed3093cf994e0981e74fc5a929d7dc847a9a16f3477f824ace1050c8b57093
+  sha256: fcdf5c3a839f75818f4f4c7f650a85307a6ddf67bfe9f82d1a44eb2285d91d4e
 - id: slot:05-formalizations/LS.FORM.002-register-code-developer.ru.md
   path: PACK-rhetoric/pack/language-style/05-formalizations/LS.FORM.002-register-code-developer.ru.md
   sha256: bd3775c73956408aeca1f6ef46db47cf71e067ecf004cd73bbe6309a4e09e312
