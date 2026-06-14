@@ -1,6 +1,8 @@
 # Авторское наложение L1 (инженерный код). see DP.SC.173, peer-session 2026-06-11-33.
 # content-bearing: указатель на владельца L1, компилятор его materialize (не render).
 # Слой каскада base → domain → market → [author] → user. Опционален (applies_to не матчит → пропуск).
+# ИНВАРИАНT (WP-408 Ф6, OwnerIntegrity): это УКАЗАТЕЛЬ на content_source, НЕ копия правил.
+# Инлайнить текст правил сюда запрещено — источник один (code-style-author.md). Иначе дрейф.
 overlay_class: author
 overlay_type: content
 content_source: L1.code-style   # DS-my-strategy/memory/code-style-author.md

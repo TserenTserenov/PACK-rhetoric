@@ -496,7 +496,9 @@ def main() -> int:
         print("Перегенерируй: python3 compiler.py lock")
         return 1
 
-    return 2
+    # argparse(required=True) гарантирует одну из трёх субкоманд — сюда поток не доходит.
+    # Громкий guard вместо тихого return: если набор субпарсеров изменят, упадём явно, не вернём 0.
+    raise SystemExit(f"неизвестная субкоманда: {args.cmd!r}")
 
 
 if __name__ == "__main__":

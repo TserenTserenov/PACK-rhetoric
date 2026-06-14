@@ -19,6 +19,7 @@ CLI:
 from __future__ import annotations
 
 import argparse
+import os
 import re
 import sys
 
@@ -27,6 +28,9 @@ import dispatcher
 
 # Короче порога → пустой/почти-пустой слот, не считается покрытием (улов Кими: ложный 100%).
 MIN_FRAGMENT_LENGTH = 20
+# Лог детектора кода (контракт WP-388): пишет code-style-hook.sh. Метрика читает его read-only —
+# детекция остаётся в WP-408 (code-style-hook.sh), здесь только агрегация (WP-408 Ф6, шов 2).
+CODE_VIOLATION_LOG = os.path.expanduser("~/.claude/logs/style-violations.log")
 # События, для которых базовый регистр (fallback) — намеренно. Исключаются из знаменателя покрытия.
 INTENTIONAL_FALLBACK_EVENTS: set = set()
 # Машинные маркеры (A10): запрещены во ВСЕХ человеко-регистрах. Фиксированный набор MVP.
@@ -80,12 +84,39 @@ def semantic_compliance_check(text: str, register: str | None = None) -> dict:
     }
 
 
+def code_compliance_from_hook_log(log_path: str | None = None) -> dict:
+    """Выход→регистр для КОДА: агрегирует нарушения из лога детектора code-style-hook.sh.
+
+    Read-only: детекция P1/P2/P4 живёт в WP-408 (code-style-hook.sh), метрика только считает.
+    Контракт строки лога (WP-388): 'TIMESTAMP | agent | rule | desc | context'; rule вида P\\d+ —
+    кодовое нарушение, прочие (BASE*, A*) — текстовые, в этот счётчик не входят.
+    Лога нет → нарушений по коду не зафиксировано (status no_log, не ошибка).
+    """
+    path = log_path or CODE_VIOLATION_LOG
+    if not os.path.exists(path):
+        return {"status": "no_log", "path": path, "total": 0, "by_rule": {}}
+    by_rule: dict = {}
+    # errors="replace": лог несёт редактированные сниппеты кода, байты могут быть не UTF-8.
+    # Поле правила (parts[2]) всегда ASCII (P\d+), битые байты в контексте не должны ронять подсчёт.
+    with open(path, encoding="utf-8", errors="replace") as f:
+        for line in f:
+            parts = [p.strip() for p in line.split("|")]
+            if len(parts) < 3:
+                continue
+            rule = parts[2]
+            if re.fullmatch(r"P\d+", rule):
+                by_rule[rule] = by_rule.get(rule, 0) + 1
+    return {"status": "ok", "path": path, "total": sum(by_rule.values()),
+            "by_rule": dict(sorted(by_rule.items()))}
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description="Метрики дисциплины стилей (WP-412 Ф10)")
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("coverage", help="отчёт покрытия по событиям диспетчера")
     c = sub.add_parser("check", help="механические нарушения соответствия в тексте")
     c.add_argument("text")
+    sub.add_parser("code-compliance", help="нарушения кода P1/P2/P4 из лога детектора")
     args = ap.parse_args()
 
     if args.cmd == "coverage":
@@ -96,6 +127,14 @@ def main() -> int:
         if r["unmapped"]:
             print(f"Забыли слот (unmapped): {r['unmapped']}")
         return 0
+
+    if args.cmd == "code-compliance":
+        r = code_compliance_from_hook_log()
+        if r["status"] == "no_log":
+            print(f"Лог детектора кода не найден ({r['path']}) — нарушений не зафиксировано.")
+            return 0
+        print(f"Нарушений кода: {r['total']} {r['by_rule'] or '(чисто)'}")
+        return 1 if r["total"] else 0
 
     violations = mechanical_compliance_check(args.text)
     if violations:

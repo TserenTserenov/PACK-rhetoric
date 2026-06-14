@@ -4,7 +4,9 @@
 Инварианты: один ключ→один фрагмент; разные каналы при одном читателе→фрагменты отличаются только
 рынком; диспетчер тонкий (нет стилевой логики); покрытие защищено от пустых слотов."""
 
+import os
 import re
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -78,6 +80,34 @@ class TestCompliance(unittest.TestCase):
         r = sm.semantic_compliance_check("любой текст")
         self.assertEqual(r["status"], "not_implemented")
         self.assertIn("interface", r)
+
+
+class TestCodeCompliance(unittest.TestCase):
+    """Шов 2 (WP-408 Ф6): метрика читает лог детектора кода read-only."""
+
+    def test_counts_p_rules_skips_text_rules(self):
+        # лог в формате WP-388: P1/P2/P4 — кодовые, BASE5/A10 — текстовые (не считаем)
+        log = (
+            "2026-06-14 10:00:00 | claude-code | P1 | test-without-assertion | assert True\n"
+            "2026-06-14 10:01:00 | claude-code | P4 | swallowed-exception | except: pass\n"
+            "2026-06-14 10:02:00 | claude-code | P1 | test-without-assertion | assert True\n"
+            "2026-06-14 10:03:00 | claude-code | BASE5 | em-dash | текст — текст\n"
+        )
+        with tempfile.NamedTemporaryFile("w", suffix=".log", delete=False, encoding="utf-8") as f:
+            f.write(log)
+            path = f.name
+        try:
+            r = sm.code_compliance_from_hook_log(path)
+        finally:
+            os.unlink(path)
+        self.assertEqual(r["status"], "ok")
+        self.assertEqual(r["total"], 3)                 # 2×P1 + 1×P4, BASE5 не в счёте
+        self.assertEqual(r["by_rule"], {"P1": 2, "P4": 1})
+
+    def test_missing_log_is_not_error(self):
+        r = sm.code_compliance_from_hook_log("/nonexistent/style-violations.log")
+        self.assertEqual(r["status"], "no_log")
+        self.assertEqual(r["total"], 0)
 
 
 if __name__ == "__main__":
