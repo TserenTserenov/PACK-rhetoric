@@ -1,6 +1,6 @@
 # AUTO-GENERATED (registry-manifest.lock) — коммитится как package-lock.
 # Перегенерация: python3 compiler.py lock. Проверка: python3 compiler.py verify.
-manifest_hash: 9c5445c2214ce922089cdf22f0072adf8bbf8ae5a23d2499ce0e20b089dee444
+manifest_hash: 04de40f41a216f15f7b42de4192488c049b286ec740f7977b0b9b11f5086a23c
 sources:
 - id: content:DP.SC.050
   path: PACK-digital-platform/pack/digital-platform/02-domain-entities/communication-style-base.md
@@ -14,6 +14,9 @@ sources:
 - id: content:L1.communication
   path: DS-my-strategy/memory/communication-style-author.md
   sha256: c93673b8fea565543fae4b96bed39ada1453172ec4dfc85381acf70791a4da22
+- id: content:L1.video-speech
+  path: DS-Knowledge-Index-Tseren/video/STYLE.md
+  sha256: 8b11f2449aaa47fac3fd742d58981ead4ce5c2d15f2bf160c4c186d75f761048
 - id: content:LS.academic-guide
   path: PACK-rhetoric/pack/language-style/02-domain-entities/LS.D.004-academic-guide-style.md
   sha256: 9744c8c209940afeff006a96cc2a017ca5f08164d3cbef74379fe761abf7759c
@@ -41,6 +44,9 @@ sources:
 - id: overlay:author:overlays/author/conversational.yaml
   path: PACK-rhetoric/pack/language-style/overlays/author/conversational.yaml
   sha256: beac38d24bdaa1946625bcf172577b95229b3ad96e31ab2348b7914aa6f3d6af
+- id: overlay:author:overlays/author/video-speech.yaml
+  path: PACK-rhetoric/pack/language-style/overlays/author/video-speech.yaml
+  sha256: 128ce1aa65e0b910f73871667ae9fd6302f31b06a7a8bb9a7c0fff49db7f82a5
 - id: overlay:domain:overlays/domain/personal-development.yaml
   path: PACK-rhetoric/pack/language-style/overlays/domain/personal-development.yaml
   sha256: 5735b2fbc64d09e86d410868c1fa24268522b1a3a01bd14b73d8918a39422dd2

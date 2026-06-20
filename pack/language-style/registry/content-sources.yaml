@@ -7,6 +7,8 @@ DP.SC.172: PACK-digital-platform/pack/digital-platform/02-domain-entities/engine
 # Владельцы авторского слоя L1 (Ф6) — третий репо, DS-my-strategy/memory. additive-only поверх L0.
 L1.communication: DS-my-strategy/memory/communication-style-author.md
 L1.code-style: DS-my-strategy/memory/code-style-author.md
+# Видеоречь (WP-433) — владелец в Индексе знаний (директива пилота); голос наследуется от §9a того же репо.
+L1.video-speech: DS-Knowledge-Index-Tseren/video/STYLE.md
 # Агент-агентный стиль (Ф8) — владелец в паке языковых стилей (граница поле↔стиль, §5).
 LS.agent-agent: PACK-rhetoric/pack/language-style/02-domain-entities/LS.D.003-agent-agent-style.md
 # Академический стиль руководства (Ф9) — владелец в паке стилей.
