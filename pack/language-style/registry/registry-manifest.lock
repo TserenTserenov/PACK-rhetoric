@@ -1,6 +1,6 @@
 # AUTO-GENERATED (registry-manifest.lock) — коммитится как package-lock.
 # Перегенерация: python3 compiler.py lock. Проверка: python3 compiler.py verify.
-manifest_hash: 04de40f41a216f15f7b42de4192488c049b286ec740f7977b0b9b11f5086a23c
+manifest_hash: 3cf9939284c6bb68d46f247a203b2f58ec5d60c2b69140b57fb9799e924b592d
 sources:
 - id: content:DP.SC.050
   path: PACK-digital-platform/pack/digital-platform/02-domain-entities/communication-style-base.md
@@ -14,9 +14,12 @@ sources:
 - id: content:L1.communication
   path: DS-my-strategy/memory/communication-style-author.md
   sha256: c93673b8fea565543fae4b96bed39ada1453172ec4dfc85381acf70791a4da22
+- id: content:L1.post-style
+  path: DS-Knowledge-Index-Tseren/style/post.md
+  sha256: 7588c973c12cf0496d5929f8a4c08ab03ca8d69521998926263f41a1dbbd3b3e
 - id: content:L1.video-speech
-  path: DS-Knowledge-Index-Tseren/video/STYLE.md
-  sha256: 8b11f2449aaa47fac3fd742d58981ead4ce5c2d15f2bf160c4c186d75f761048
+  path: DS-Knowledge-Index-Tseren/style/video.md
+  sha256: 872eb4babd15658c37104979371aa0a96f413a3b26969af09049fa1ab6ed19b7
 - id: content:LS.academic-guide
   path: PACK-rhetoric/pack/language-style/02-domain-entities/LS.D.004-academic-guide-style.md
   sha256: 9744c8c209940afeff006a96cc2a017ca5f08164d3cbef74379fe761abf7759c
@@ -44,9 +47,12 @@ sources:
 - id: overlay:author:overlays/author/conversational.yaml
   path: PACK-rhetoric/pack/language-style/overlays/author/conversational.yaml
   sha256: beac38d24bdaa1946625bcf172577b95229b3ad96e31ab2348b7914aa6f3d6af
+- id: overlay:author:overlays/author/post-style.yaml
+  path: PACK-rhetoric/pack/language-style/overlays/author/post-style.yaml
+  sha256: bd7d99490843f1832f01643d69676224f99ba7acd7ae49caad87b586cd9f2a70
 - id: overlay:author:overlays/author/video-speech.yaml
   path: PACK-rhetoric/pack/language-style/overlays/author/video-speech.yaml
-  sha256: 128ce1aa65e0b910f73871667ae9fd6302f31b06a7a8bb9a7c0fff49db7f82a5
+  sha256: 885e46b95eeebbc8746d9b56b4a1db29eab0374c3caf3b25cd3f2af0cff36c4c
 - id: overlay:domain:overlays/domain/personal-development.yaml
   path: PACK-rhetoric/pack/language-style/overlays/domain/personal-development.yaml
   sha256: 5735b2fbc64d09e86d410868c1fa24268522b1a3a01bd14b73d8918a39422dd2

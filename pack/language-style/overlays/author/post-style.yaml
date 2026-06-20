@@ -1,10 +1,10 @@
-# Авторское наложение L1 (видеоречь, короткие ролики). see DP.SC.173, WP-433.
+# Авторское наложение L1 (стиль постов, лонгрид). see DP.SC.173, WP-335 Ф8.
 # content-bearing: указатель на владельца контента, компилятор его materialize (не render).
 # Слой каскада base → domain → market → genre → [author] → user. Опционален (applies_to не матчит → пропуск).
 # ИНВАРИАНТ (OwnerIntegrity): это УКАЗАТЕЛЬ на content_source, НЕ копия правил.
-# Источник один (DS-Knowledge-Index-Tseren/style/video.md). Голос наследуется от style/post.md.
+# Источник один (DS-Knowledge-Index-Tseren/style/post.md) — канон голоса автора, общий для постов и видео.
 overlay_class: author
 overlay_type: content
-content_source: L1.video-speech   # DS-Knowledge-Index-Tseren/style/video.md
+content_source: L1.post-style   # DS-Knowledge-Index-Tseren/style/post.md
 applies_to:
-  channel: [video]
+  channel: [post]

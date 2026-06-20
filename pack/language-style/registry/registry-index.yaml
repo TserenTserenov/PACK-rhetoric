@@ -40,6 +40,7 @@ overlays:
     - overlays/author/conversational.yaml
     - overlays/author/code.yaml
     - overlays/author/video-speech.yaml
+    - overlays/author/post-style.yaml
 
 # Источники вне каскада, влияющие на систему стилей: только манифест/verify (freshness),
 # компиляция их не читает. Чтением presets владеет style_selector.py (PRESETS_PATH).
