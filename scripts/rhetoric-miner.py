@@ -175,7 +175,10 @@ def call_llm_via_messages_api(prompt: str) -> str:
     Honors ANTHROPIC_BASE_URL (proxy URL) and ANTHROPIC_API_KEY (proxy shared secret
     or real Anthropic key — proxy distinguishes by header).
     """
-    base_url = os.environ.get("ANTHROPIC_BASE_URL", "https://api.anthropic.com").rstrip("/")
+    # WP-7/WP-399: default routes through the shared proxy (which forwards to
+    # OpenRouter) instead of direct Anthropic, so a forgotten env var can't
+    # silently bill the raw Anthropic key.
+    base_url = os.environ.get("ANTHROPIC_BASE_URL", "https://iwe-llm-proxy-production.up.railway.app").rstrip("/")
     api_key = os.environ.get("ANTHROPIC_API_KEY", "")
     if not api_key:
         raise RuntimeError("ANTHROPIC_API_KEY not set")
