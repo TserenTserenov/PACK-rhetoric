@@ -1,0 +1,51 @@
+# Машинный контракт маршрутизации знаний (WP-429 Ф6.1)
+# SoT для размещения записей этого домена. Заменяет прозаические копии в:
+#   DP.KR.001 §5, memory/routing-vocab.md, memory/repo-type-rules.md, apply-captures/SKILL.md шаг 4в.
+# memory/routing-vocab.md — производная авто-собираемая проекция поверх этого файла, не редактировать вручную.
+# PACK-rhetoric содержит ДВА независимых домена — этот файл покрывает только rhetoric/
+# (второй домен — pack/language-style/routing.yaml).
+# ВНИМАНИЕ (drift-сигналы, НЕ устраняются этим контрактом — Drift Reporting, CLAUDE.md):
+# 1. RHE.MAP.001.md документирует illustrations/{type}/*.md (71+2 карточки RHE.ILL.*) —
+#    директория физически отсутствует на диске на момент составления контракта (2026-07-24).
+# 2. RHE.FORM.003-no-bold-headers-under-1000-words.md имеет frontmatter type: FORM (не
+#    formalization, как у RHE.FORM.001/002) + другую схему полей (title/domain/trust/
+#    epistemic_stage вместо name/created) — линтер (Ф6.2) корректно это ловит как нарушение.
+schema_version: 1
+pack: rhetoric
+
+kinds:
+  RHE.D:
+    dir: pack/rhetoric/02-domain-entities/
+    id_pattern: 'RHE\.D\.\d{3}-[a-z0-9-]+\.md$'
+    frontmatter_check: {field: type, value: domain-entity}
+    storage: file
+
+  RHE.FORM:
+    dir: pack/rhetoric/05-formalizations/
+    id_pattern: 'RHE\.FORM\.\d{3}-[a-z0-9-]+\.md$'
+    frontmatter_check: {field: type, value: formalization}
+    storage: file
+
+  RHE.METHOD:
+    dir: pack/rhetoric/05-formalizations/   # реальность: METHOD физически лежит в 05-formalizations/, не в 03-methods/ (которого в этом Pack нет)
+    id_pattern: 'RHE\.METHOD\.\d{3}-[a-z0-9-]+\.md$'
+    frontmatter_check: {field: type, value: method}
+    storage: file
+
+  RHE.SOTA:
+    dir: pack/rhetoric/06-sota/
+    id_pattern: 'RHE\.SOTA\.\d{3}-[a-z0-9-]+\.md$'
+    frontmatter_check: {field: type, value: sota}
+    storage: file
+
+  RHE.SC:
+    dir: pack/rhetoric/08-service-clauses/
+    id_pattern: 'RHE\.SC\.\d{3}-[a-z0-9-]+\.md$'
+    frontmatter_check: {field: type, value: sc}
+    storage: file
+
+  RHE.MAP:
+    dir: pack/rhetoric/07-map/
+    id_pattern: 'RHE\.MAP\.\d{3}\.md$'   # реальность: единственный файл RHE.MAP.001.md, без slug после номера
+    frontmatter_check: null   # реальность: frontmatter без поля type (только id/name/status/valid_from/schema_version)
+    storage: file

@@ -1,0 +1,27 @@
+# Машинный контракт маршрутизации знаний (WP-429 Ф6.1)
+# SoT для размещения записей этого домена. Заменяет прозаические копии в:
+#   DP.KR.001 §5, memory/routing-vocab.md, memory/repo-type-rules.md, apply-captures/SKILL.md шаг 4в.
+# memory/routing-vocab.md — производная авто-собираемая проекция поверх этого файла, не редактировать вручную.
+# PACK-rhetoric содержит ДВА независимых домена — этот файл покрывает только language-style/
+# (второй домен — pack/rhetoric/routing.yaml).
+schema_version: 1
+pack: language-style
+
+kinds:
+  LS.D:
+    dir: pack/language-style/02-domain-entities/
+    id_pattern: 'LS\.D\.\d{3}-[a-z0-9-]+\.md$'
+    frontmatter_check: {field: type, value: domain-entity}
+    storage: file
+
+  LS.FORM:
+    dir: pack/language-style/05-formalizations/
+    id_pattern: 'LS\.FORM\.\d{3}-[a-z0-9-]+\.ru\.md$'   # реальность: все LS.FORM.* с языковым суффиксом .ru.md
+    frontmatter_check: {field: type, value: register}
+    storage: file
+
+  LS.SOTA:
+    dir: pack/language-style/06-sota/
+    id_pattern: 'LS\.SOTA\.\d{3}-[a-z0-9-]+\.ru\.md$'   # реальность: тот же .ru.md суффикс
+    frontmatter_check: {field: type, value: sota}
+    storage: file
