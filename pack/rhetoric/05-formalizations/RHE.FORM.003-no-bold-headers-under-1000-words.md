@@ -1,7 +1,7 @@
 ---
 id: RHE.FORM.003
 title: "Жирные подзаголовки в тексте <1000 слов — структурный шум"
-type: FORM
+type: formalization
 domain: rhetoric
 status: candidate
 trust: low

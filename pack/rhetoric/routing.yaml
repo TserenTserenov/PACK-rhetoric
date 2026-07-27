@@ -7,9 +7,8 @@
 # ВНИМАНИЕ (drift-сигналы, НЕ устраняются этим контрактом — Drift Reporting, CLAUDE.md):
 # 1. RHE.MAP.001.md документирует illustrations/{type}/*.md (71+2 карточки RHE.ILL.*) —
 #    директория физически отсутствует на диске на момент составления контракта (2026-07-24).
-# 2. RHE.FORM.003-no-bold-headers-under-1000-words.md имеет frontmatter type: FORM (не
-#    formalization, как у RHE.FORM.001/002) + другую схему полей (title/domain/trust/
-#    epistemic_stage вместо name/created) — линтер (Ф6.2) корректно это ловит как нарушение.
+# 2. RHE.FORM.003 type: FORM → type: formalization — ИСПРАВЛЕНО пилотом 2026-07-27
+#    (был единственным таким значением во всей базе, подтверждённый дрейф).
 schema_version: 1
 pack: rhetoric
 
