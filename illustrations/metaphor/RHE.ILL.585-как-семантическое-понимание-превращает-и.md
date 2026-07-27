@@ -1,5 +1,5 @@
 ---
-id: RHE.ILL.406
+id: RHE.ILL.585
 trope_type: metaphor
 source_text: |
   It is easy to dismiss the increased flexibility and sophistication as marginally useful. This is only true if the new semantics is not understood. When people understand the semantics—when they master the new way of seeing—they start using its enormous potential.

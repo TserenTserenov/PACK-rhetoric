@@ -1,5 +1,5 @@
 ---
-id: RHE.ILL.004
+id: RHE.ILL.532
 trope_type: counter_example
 source_text: |
   Changes have occurred, but if we look closely, little change has taken place in the basic information structure. The big change is in the efficiency with which they are processed. Automated computer systems process more deal slips faster and more accurately than the old manual paper systems. Although this is a welcome improvement, it is still disappointing that we have not yet had the kind of radical change one might expect from computer technology.

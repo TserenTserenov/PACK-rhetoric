@@ -1,5 +1,5 @@
 ---
-id: RHE.ILL.003
+id: RHE.ILL.526
 trope_type: metaphor
 source_text: |
   A mentor provided the intellectual push needed to recognize that ideas from abstract 

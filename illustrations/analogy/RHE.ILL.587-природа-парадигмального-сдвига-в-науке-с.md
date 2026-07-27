@@ -1,5 +1,5 @@
 ---
-id: RHE.ILL.425
+id: RHE.ILL.587
 trope_type: analogy
 source_text: |
   In Chapter 1, we used an ambiguous picture as an analogy for how paradigm shifts work.

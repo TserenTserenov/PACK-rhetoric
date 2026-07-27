@@ -1,5 +1,5 @@
 ---
-id: RHE.ILL.005
+id: RHE.ILL.545
 trope_type: metaphor
 source_text: |
   When people who live in a computer world model the real world, they represent it as data and process. They either ignore the real world's distinction between things and changes or assume that data maps directly onto things and process onto changes.

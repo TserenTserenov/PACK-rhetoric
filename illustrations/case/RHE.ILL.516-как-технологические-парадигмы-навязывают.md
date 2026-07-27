@@ -1,5 +1,5 @@
 ---
-id: RHE.ILL.002
+id: RHE.ILL.516
 trope_type: case
 source_text: |
   Computer technology, unlike paper technology, can both store and process information. So, in the computer world, the distinction between data and process is important. But it is only important in the computer system. It is irrelevant to the things in the business.

@@ -1,5 +1,5 @@
 ---
-id: RHE.ILL.005
+id: RHE.ILL.547
 trope_type: analogy
 source_text: |
   The relationship between individual attributes and attribute types is similar to that between individual entities and entity types. Every individual attribute belongs to an attribute type and an attribute type can have a number of individual attributes.

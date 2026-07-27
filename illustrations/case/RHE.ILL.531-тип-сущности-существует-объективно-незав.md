@@ -1,5 +1,5 @@
 ---
-id: RHE.ILL.003
+id: RHE.ILL.531
 trope_type: case
 source_text: |
   For instance, we might catch a fleeting glimpse of something (it may be a fox or a dog) on a dark and foggy night. Even though we cannot say what entity type the thing belongs to, it still has one—as shown in Figure 3.1.

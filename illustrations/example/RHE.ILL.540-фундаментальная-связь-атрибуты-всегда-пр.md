@@ -1,5 +1,5 @@
 ---
-id: RHE.ILL.004
+id: RHE.ILL.540
 trope_type: example
 source_text: |
   Someone looking at my car naturally notices it is red (in other words, it has a red attribute/property/quality). We always see individual attributes belonging to individual entities. Notice how difficult it is to see the particular red property existing on its own (out in the real world) with no entity attached to it. This seems impossible.

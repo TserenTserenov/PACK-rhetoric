@@ -1,5 +1,5 @@
 ---
-id: RHE.ILL.004
+id: RHE.ILL.535
 trope_type: case
 source_text: |
   A theorist studied abstract logical ideas in university with no conception of 

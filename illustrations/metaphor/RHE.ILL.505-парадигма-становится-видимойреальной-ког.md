@@ -1,5 +1,5 @@
 ---
-id: RHE.ILL.001
+id: RHE.ILL.505
 trope_type: metaphor
 source_text: |
   Sometimes people are surprised when they first see it in the cold light of day—some even find it difficult to accept that it is what they have been working with.

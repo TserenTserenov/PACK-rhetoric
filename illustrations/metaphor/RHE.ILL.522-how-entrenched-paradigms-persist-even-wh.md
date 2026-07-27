@@ -1,5 +1,5 @@
 ---
-id: RHE.ILL.003
+id: RHE.ILL.522
 trope_type: metaphor
 source_text: |
   System builders recognise that it is a mistake to use the old manual paper-bound way of handling things when automating a process. Although they recognise this, it is ironic that they are still enchained to a paper-bound entity way of viewing the business.

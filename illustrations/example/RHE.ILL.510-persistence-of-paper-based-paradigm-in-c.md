@@ -1,5 +1,5 @@
 ---
-id: RHE.ILL.002
+id: RHE.ILL.510
 trope_type: example
 source_text: |
   Most computer information is still steeped in an entity-view based on paper and ink technology. That is why most computer information fits neatly onto paper forms, such as statements of account, sales invoices and deal slips. The paper-bound entity way these forms handle information has been imported wholesale into our computer systems.

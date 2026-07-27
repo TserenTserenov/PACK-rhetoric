@@ -1,5 +1,5 @@
 ---
-id: RHE.ILL.005
+id: RHE.ILL.541
 trope_type: analogy
 source_text: |
   The technology leap from paper and ink to computers is enormous. Yet, the underlying entity paradigm with its rows and columns structure has not yet really changed. Forms such as sales invoices and deal slips have not been transformed into something radically different; i.e., something that looks as if it were based on computing—not paper and ink—technology.

@@ -1,5 +1,5 @@
 ---
-id: RHE.ILL.401
+id: RHE.ILL.582
 trope_type: example
 source_text: |
   Substance paradigm может избежать ограничения одной классификации, используя атрибуты.

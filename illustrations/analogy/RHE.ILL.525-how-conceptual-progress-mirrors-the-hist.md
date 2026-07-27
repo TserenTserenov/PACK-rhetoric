@@ -1,5 +1,5 @@
 ---
-id: RHE.ILL.003
+id: RHE.ILL.525
 trope_type: analogy
 source_text: |
   We saw how certain pre-logical cultures thought corn was the same as deer.

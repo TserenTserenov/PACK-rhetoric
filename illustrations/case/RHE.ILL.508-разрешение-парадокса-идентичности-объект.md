@@ -1,5 +1,5 @@
 ---
-id: RHE.ILL.001
+id: RHE.ILL.508
 trope_type: case
 source_text: |
   "We expect some of a car's components to change. For instance, it is customary to change a car's tyres when they are worn; it is illegal not to. When we change a car's tyre, it stays the same car... The two tyres have state objects that are 'components' of the car."

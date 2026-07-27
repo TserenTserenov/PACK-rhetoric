@@ -1,5 +1,5 @@
 ---
-id: RHE.ILL.003
+id: RHE.ILL.529
 trope_type: analogy
 source_text: |
   Modern western civilisation has a more accurate way of seeing sameness than oral 

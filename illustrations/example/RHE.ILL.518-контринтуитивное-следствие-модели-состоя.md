@@ -1,5 +1,5 @@
 ---
-id: RHE.ILL.002
+id: RHE.ILL.518
 trope_type: example
 source_text: |
   "Now consider a super-fit girl with a superb constitution... she was permanently in good health from the day she was born until the day she died. As her well state's time-slice stretches from birth to death, it fills her four-dimensional extension exactly... she is her own well state object."

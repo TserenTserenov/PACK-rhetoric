@@ -1,5 +1,5 @@
 ---
-id: RHE.ILL.407
+id: RHE.ILL.586
 trope_type: counter_example
 source_text: |
   This generalisation has led to elimination of one class but also construction of two new classes. Overall, this is hardly conceptual economy. This kind of generalisation only begins to deliver conceptual economy when there are more than a few objects in the system.

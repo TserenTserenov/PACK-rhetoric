@@ -1,5 +1,5 @@
 ---
-id: RHE.ILL.006
+id: RHE.ILL.548
 trope_type: analogy
 source_text: |
   Business modelling's objective is, or should be, to capture an understanding of the business. The later stages use this understanding, but their objectives are aligned with the successful operation of the implemented system. As we work through the book, we shall see how important making the distinction between understanding and operation is for business modelling.

@@ -1,5 +1,5 @@
 ---
-id: RHE.ILL.001
+id: RHE.ILL.506
 trope_type: analogy
 source_text: |
   It would be as if the board of directors of a large company insisted on being involved in every decision, from appointing a new chairman to buying a box of rubber bands.

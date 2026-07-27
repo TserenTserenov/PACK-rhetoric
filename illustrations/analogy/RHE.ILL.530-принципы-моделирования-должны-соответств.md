@@ -1,5 +1,5 @@
 ---
-id: RHE.ILL.003
+id: RHE.ILL.530
 trope_type: analogy
 source_text: |
   These were developed for use with paper and ink technology and are unsuited for 

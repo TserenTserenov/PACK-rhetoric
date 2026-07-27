@@ -1,5 +1,5 @@
 ---
-id: RHE.ILL.405
+id: RHE.ILL.584
 trope_type: example
 source_text: |
   Consider an individual, a member of the class [animals that combine two properties], where the definition is "something that has property A and property B". Members are just those members of class A that are also members of class B. By defining the intermediate class with its two super-classes, it becomes superfluous—could be eliminated without losing functionality.

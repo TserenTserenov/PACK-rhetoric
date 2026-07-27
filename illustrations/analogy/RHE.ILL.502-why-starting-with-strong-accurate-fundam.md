@@ -1,5 +1,5 @@
 ---
-id: RHE.ILL.001
+id: RHE.ILL.502
 trope_type: analogy
 source_text: |
   A long time ago when most buildings were made out of mud and straw, we could say the builders had a mud paradigm. Then builders discovered that once mud is baked in a kiln to produce a brick its strength increases substantially. Buildings with ten stories became feasible using this new, stronger, brick particle. But bricks have their limit. They cannot support the skyscrapers we see in most major city centres. These use a different, stronger, building block—reinforced steel and concrete.

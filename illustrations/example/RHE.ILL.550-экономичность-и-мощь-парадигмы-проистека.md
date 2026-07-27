@@ -1,5 +1,5 @@
 ---
-id: RHE.ILL.006
+id: RHE.ILL.550
 trope_type: example
 source_text: |
   Re-use works its way down the entity framework. The general entity and attribute patterns are used to construct all the patterns at the type level. These are then used (and so their embedded general patterns re-used) to construct the individual level patterns.
