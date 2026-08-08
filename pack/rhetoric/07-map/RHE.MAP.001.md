@@ -12,15 +12,19 @@ schema_version: 1
 
 | Тип | Кол-во | Статус |
 |-----|--------|--------|
+| Контракт домена (BC) | 2 | RHE.BC.001-002 |
 | Сущности (D) | 4 | RHE.D.001-004 |
-| Формализации (FORM) | 2 | RHE.FORM.001-002 |
-| Методы (METHOD) | 7 | RHE.METHOD.001-007 |
+| Формализации (FORM) | 3 | RHE.FORM.001-003 |
+| Методы (METHOD) | 11 | RHE.METHOD.001-011 |
 | SOTA | 3 | RHE.SOTA.001-003 |
-| Service Clause | 1 | DP.SC.149 (в PACK-digital-platform) |
-| Карточки active | 71 | illustrations/{type}/*.md (+ RHE.ILL.497, 2026-07-10) |
-| Карточки pending | 2 | illustrations/pending/*.md |
+| Service Clause | 1 | RHE.SC.001 |
+| Карта | 1 | RHE.MAP.001 |
+| Индекс реестра | 1 | registry/memes-index.md |
+| Карточки в типовых папках | 541 | illustrations/{type}/*.md |
+| Карточки pending | 11 | illustrations/pending/*.md |
+| **Карточки всего** | **552** | Фактический подсчёт файлов RHE.ILL.*.md |
 
-> **Примечание (2026-07-10):** до этой правки карта не отражала RHE.D.003, RHE.METHOD.001-003, RHE.SOTA.002 — они существовали на диске с 2026-06-20, но не попали в карту при создании. Обновлено заодно с добавлением 2026-07-10.
+> **Примечание (2026-08-08):** карта полностью пересчитана по фактическим файлам. Исторические числа 71 active + 2 pending и перечень RHE.METHOD.001-007 больше не соответствовали диску. «Типовая папка» означает расположение карточки; внутренние legacy-поля `status` не используются для этого счётчика, потому что заполнены непоследовательно.
 
 ## Сущности
 
@@ -37,6 +41,7 @@ schema_version: 1
 |----|------|----------|
 | RHE.FORM.001 | 05-formalizations/RHE.FORM.001-illustration-card.md | Схема карточки (14 полей) |
 | RHE.FORM.002 | 05-formalizations/RHE.FORM.002-trope-validation.md | Критерии валидации по типу тропа |
+| RHE.FORM.003 | 05-formalizations/RHE.FORM.003-no-bold-headers-under-1000-words.md | Жирные подзаголовки в коротком тексте как структурный шум |
 | RHE.METHOD.001 | 05-formalizations/RHE.METHOD.001-and-but-therefore.md | И-Но-Следовательно (Olson, Parker/Stone) |
 | RHE.METHOD.002 | 05-formalizations/RHE.METHOD.002-narrative-immersion.md | Погружение в нарратив |
 | RHE.METHOD.003 | 05-formalizations/RHE.METHOD.003-through-line.md | Сквозная линия (Anderson, Ogilvy) |
@@ -44,6 +49,10 @@ schema_version: 1
 | RHE.METHOD.005 | 05-formalizations/RHE.METHOD.005-finale-sharpen-not-recap.md | Финал без пересказа (контекстный) |
 | RHE.METHOD.006 | 05-formalizations/RHE.METHOD.006-thesis-ordering-for-thinking-audience.md | Порядок тезисов для думающей аудитории (контекстный) |
 | RHE.METHOD.007 | 05-formalizations/RHE.METHOD.007-adapt-dont-adopt.md | Adapt, don't adopt: форма без тональности (контекстный) |
+| RHE.METHOD.008 | 05-formalizations/RHE.METHOD.008-objection-map-skeptic-personas.md | Карта возражений через панель персонажей-скептиков |
+| RHE.METHOD.009 | 05-formalizations/RHE.METHOD.009-value-before-mechanics.md | Ценность до механики |
+| RHE.METHOD.010 | 05-formalizations/RHE.METHOD.010-two-phrase-tool-limit-hook.md | Двухфразовый хук: утверждение + скрытый предел инструмента |
+| RHE.METHOD.011 | 05-formalizations/RHE.METHOD.011-channel-routing-map-before-extraction.md | Карта разбора по каналам до извлечения |
 
 ## Различения (01B)
 
@@ -70,19 +79,21 @@ schema_version: 1
 | FORM.001 (схема) | → | D.001 (Illustration) | describes schema |
 | FORM.002 (валидация) | → | D.002 (TropeTaxonomy) | validates per type |
 | illustrations/*.md | → | FORM.001 | conforms to |
-| illustrations/*.md | → | PACK-personal PD.CHR/ROLE/STATE | illustrates concept_id |
+| illustrations/*.md | → | Pack-понятия | illustrates[].concept_id + pack_ref |
+| RHE.SC.001 | → | illustrations/ | lookup contract |
 | DP.SC.149 | → | illustrations/ | produces |
 | DP.AISYS.013 §4.9 | → | DP.SC.149 | implements M-RM |
 
-## Типы карточек по трому
+## Типы карточек по типу
 
-| Тип | Кол-во active | Ключевое правило |
+| Тип | Кол-во в папке | Ключевое правило |
 |-----|--------------|-----------------|
-| analogy | ~13 | structural_core реляционный + breaks_when |
-| metaphor | ~22 | property transfer + breaks_when |
-| example | ~10 | concrete details |
-| case | ~4 | conflict в source_text |
-| counter_example | ~10 | failure_mechanism + audience_level ≥ 3 |
+| analogy | 125 | structural_core реляционный + breaks_when |
+| metaphor | 105 | property transfer + breaks_when |
+| example | 174 | concrete details |
+| case | 82 | conflict в source_text |
+| counter_example | 55 | failure_mechanism + audience_level ≥ 3 |
+| **Всего в типовых папках** | **541** | Не включает 11 карточек pending |
 
 ## Update Log
 
@@ -90,3 +101,4 @@ schema_version: 1
 |------|-----------|
 | 2026-05-19 | Создан. 70 active + 2 pending карточек после Ф1-Ф6 WP-340 |
 | 2026-07-10 | Peer-session apply-captures: +RHE.D.004, +RHE.METHOD.004-007, +RHE.SOTA.003, +RHE.ILL.497. Заодно синхронизирована карта с диском (D.003, METHOD.001-003, SOTA.002 существовали, но не были внесены). Pack впервые зарегистрирован в `DS-ai-systems/extractor/config/routing.md`, scope манифеста расширен (не только IWE-концепты — жизнь и мировоззрение созидателя) |
+| 2026-08-08 | Полная пересборка по диску, РП-514 Ф3: 552 карточки (541 в типовых папках + 11 pending), FORM.003 и METHOD.008-011 добавлены в навигацию, типовые счётчики пересчитаны без приблизительных значений |
