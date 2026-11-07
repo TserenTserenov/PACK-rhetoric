@@ -1,6 +1,6 @@
 # AUTO-GENERATED (registry-manifest.lock) — коммитится как package-lock.
 # Перегенерация: python3 compiler.py lock. Проверка: python3 compiler.py verify.
-manifest_hash: 6049f7f237c62273ccb9b129da0bb98d5c44213a0980d7c282399810cdc2b9df
+manifest_hash: 09ad4c0ebf54c45247449aaf4cd6212c0945a2573296a83659ad3399f6c7b72a
 sources:
 - id: content:DP.SC.050
   path: PACK-digital-platform/pack/digital-platform/02-domain-entities/communication-style-base.md
@@ -16,7 +16,7 @@ sources:
   sha256: 2fdc64f1f2c872b5a8e3065636bde7e293eebb34caa8157afc57ffccfdbf1ade
 - id: content:L1.post-style
   path: DS-Tseren-Brand/style/2.1-post.md
-  sha256: 385e28d444c770ae36033f07faf10daf0c3488a0bbb90c75528e8d685d284879
+  sha256: 4891fd416ab6c9ecfe25eb12c09547300e06343404d9409d4964e0fb2f9b0afd
 - id: content:L1.video-speech
   path: DS-Tseren-Brand/style/video.md
   sha256: ff1ed0d821fd5f60bf3a6d3ea7c8bc53562d79e3747376ee81349b99cce1a88d
