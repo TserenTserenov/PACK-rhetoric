@@ -2,9 +2,9 @@
 # content-bearing: указатель на владельца контента, компилятор его materialize (не render).
 # Слой каскада base → domain → market → genre → [author] → user. Опционален (applies_to не матчит → пропуск).
 # ИНВАРИАНТ (OwnerIntegrity): это УКАЗАТЕЛЬ на content_source, НЕ копия правил.
-# Источник один (DS-Knowledge-Index-Tseren/style/post.md) — канон голоса автора, общий для постов и видео.
+# Источник один (DS-Tseren-Brand/style/2.1-post.md) — канон голоса автора, общий для постов и видео.
 overlay_class: author
 overlay_type: content
-content_source: L1.post-style   # DS-Knowledge-Index-Tseren/style/post.md
+content_source: L1.post-style   # DS-Tseren-Brand/style/2.1-post.md
 applies_to:
   channel: [post]

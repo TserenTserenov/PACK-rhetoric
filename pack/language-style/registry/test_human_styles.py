@@ -47,6 +47,14 @@ class TestDispatcherChannelsClosed(unittest.TestCase):
         self.assertFalse(res.fallback_used)
         self.assertIn("slot:LS.FORM.011", [r["source_id"] for r in res.source_refs])
 
+    def test_post_event_resolves_with_author_voice(self):
+        # WP-619 F2: the "post" event must reach the post slot and materialize the author's post canon.
+        res = dispatcher.dispatch("post", use_cache=False)
+        self.assertFalse(res.fallback_used)
+        refs = [r["source_id"] for r in res.source_refs]
+        self.assertIn("slot:LS.FORM.008", refs)
+        self.assertIn("content:L1.post-style", refs)
+
 
 class TestPersonalTierNoLeak(unittest.TestCase):
     """WP-415 тир совместности: личный L1 автора не течёт в мультитенантный Telegram-канал,
