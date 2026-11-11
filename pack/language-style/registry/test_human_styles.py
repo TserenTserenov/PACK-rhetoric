@@ -55,6 +55,32 @@ class TestDispatcherChannelsClosed(unittest.TestCase):
         self.assertIn("slot:LS.FORM.008", refs)
         self.assertIn("content:L1.post-style", refs)
 
+    def test_post_event_carries_voice_before_post_form(self):
+        # WP-619 F5: voice 0 reaches the post as its own author overlay, ahead of the channel form.
+        res = dispatcher.dispatch("post", use_cache=False)
+        refs = [r["source_id"] for r in res.source_refs]
+        self.assertIn("content:L1.voice", refs)
+        self.assertLess(refs.index("content:L1.voice"), refs.index("content:L1.post-style"))
+        self.assertIn("Стоп-лист нейрослопа", res.fragment)  # body of 0-voice.md
+        self.assertLess(res.fragment.index("0. Общий голос автора"), res.fragment.index("# 2.1. Пост"))
+
+    def test_instruction_event_resolves(self):
+        # WP-619 F6: instruction slot + genre sections + voice + author adaptation 2.3.
+        res = dispatcher.dispatch("instruction", use_cache=False)
+        self.assertFalse(res.fallback_used)
+        refs = [r["source_id"] for r in res.source_refs]
+        self.assertIn("slot:LS.FORM.012", refs)
+        self.assertIn("content:L1.voice", refs)
+        self.assertIn("content:L1.instruction-style", refs)
+        self.assertIn("ПЕРЕД НАЧАЛОМ", res.fragment)
+        self.assertIn("2.3. Пошаговая инструкция", res.fragment)
+
+    def test_voice_and_instruction_do_not_leak_to_other_events(self):
+        for event in sorted(set(dispatcher.EVENT_KEYS) - {"post", "instruction"}):
+            refs = {r["source_id"] for r in dispatcher.dispatch(event, use_cache=False).source_refs}
+            self.assertNotIn("content:L1.voice", refs, event)
+            self.assertNotIn("content:L1.instruction-style", refs, event)
+
 
 class TestPersonalTierNoLeak(unittest.TestCase):
     """WP-415 тир совместности: личный L1 автора не течёт в мультитенантный Telegram-канал,

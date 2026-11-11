@@ -1,6 +1,6 @@
 # AUTO-GENERATED (registry-manifest.lock) — коммитится как package-lock.
 # Перегенерация: python3 compiler.py lock. Проверка: python3 compiler.py verify.
-manifest_hash: 1cc54352711657a095113f8b2b3c14b3424555262551c4a95d26343266c99ea6
+manifest_hash: 1256dc5bd77d44597bba560029b3cd81f1be556abc9b152bf195d5e1d2b8f67e
 sources:
 - id: content:DP.SC.050
   path: PACK-digital-platform/pack/digital-platform/02-domain-entities/communication-style-base.md
@@ -14,12 +14,18 @@ sources:
 - id: content:L1.communication
   path: DS-my-strategy/memory/communication-style-author.md
   sha256: 2fdc64f1f2c872b5a8e3065636bde7e293eebb34caa8157afc57ffccfdbf1ade
+- id: content:L1.instruction-style
+  path: DS-Tseren-Brand/style/2.3-instruction.md
+  sha256: 881cffdd6c7a2ccbc934eb93e82b93b63f21c4b7b8f43615cd8dfb65270e19b2
 - id: content:L1.post-style
   path: DS-Tseren-Brand/style/2.1-post.md
-  sha256: 4891fd416ab6c9ecfe25eb12c09547300e06343404d9409d4964e0fb2f9b0afd
+  sha256: 7784bc0c53d7ffaacd434031eaf2616c11c126b54e46767c68e91d796d98e4cf
 - id: content:L1.video-speech
   path: DS-Tseren-Brand/style/video.md
   sha256: ff1ed0d821fd5f60bf3a6d3ea7c8bc53562d79e3747376ee81349b99cce1a88d
+- id: content:L1.voice
+  path: DS-Tseren-Brand/style/0-voice.md
+  sha256: 20d9e854858e71ccb3d20a98a7aa89c61899026a6d6b36d4f2ab6739efd574a9
 - id: content:LS.academic-guide
   path: PACK-rhetoric/pack/language-style/02-domain-entities/LS.D.004-academic-guide-style.md
   sha256: 9744c8c209940afeff006a96cc2a017ca5f08164d3cbef74379fe761abf7759c
@@ -47,12 +53,18 @@ sources:
 - id: overlay:author:overlays/author/conversational.yaml
   path: PACK-rhetoric/pack/language-style/overlays/author/conversational.yaml
   sha256: beac38d24bdaa1946625bcf172577b95229b3ad96e31ab2348b7914aa6f3d6af
+- id: overlay:author:overlays/author/instruction-style.yaml
+  path: PACK-rhetoric/pack/language-style/overlays/author/instruction-style.yaml
+  sha256: 6bfcde93b8549a51c271b26f953149fc957d665384bed66ec6d967362076a7cd
 - id: overlay:author:overlays/author/post-style.yaml
   path: PACK-rhetoric/pack/language-style/overlays/author/post-style.yaml
-  sha256: cb393a57007e8f48ad53103eec05c91ae122b9b8023c256c402975c7e300e98e
+  sha256: 95038542428a3fda75132ac9dad2c19ffadd733698eb226abf63f5bbe3b53d6a
 - id: overlay:author:overlays/author/video-speech.yaml
   path: PACK-rhetoric/pack/language-style/overlays/author/video-speech.yaml
-  sha256: 9ed345a2c4bd6573295752cc5271796c965d65740415845859e17e16e1b72666
+  sha256: 9d633fdbcde606726d241d6b92beed48dab8f5053fe0736baddf80b96924454c
+- id: overlay:author:overlays/author/voice.yaml
+  path: PACK-rhetoric/pack/language-style/overlays/author/voice.yaml
+  sha256: 5727f5761c97d85d8f67badc9c7db16dcc8dc7f1c60d6f851d3f297bdf5a6499
 - id: overlay:domain:overlays/domain/personal-development.yaml
   path: PACK-rhetoric/pack/language-style/overlays/domain/personal-development.yaml
   sha256: 5735b2fbc64d09e86d410868c1fa24268522b1a3a01bd14b73d8918a39422dd2
@@ -62,6 +74,9 @@ sources:
 - id: overlay:genre:overlays/genre/handoff.yaml
   path: PACK-rhetoric/pack/language-style/overlays/genre/handoff.yaml
   sha256: a368dfcaf18f7607b6931c2bf0dca6adc146c9ef7689d9ad287955ff975b2214
+- id: overlay:genre:overlays/genre/instruction.yaml
+  path: PACK-rhetoric/pack/language-style/overlays/genre/instruction.yaml
+  sha256: 2eaf2e62c3d4ae06393ebfcd66068b89ac2e0d99ea6433a46570c07da54584df
 - id: overlay:genre:overlays/genre/pr.yaml
   path: PACK-rhetoric/pack/language-style/overlays/genre/pr.yaml
   sha256: ff331bc98c4327ff88ae962d4a3f54f5df602ef2114d9753a5b6858e8ffa8acc
@@ -110,3 +125,6 @@ sources:
 - id: slot:05-formalizations/LS.FORM.011-register-browser.ru.md
   path: PACK-rhetoric/pack/language-style/05-formalizations/LS.FORM.011-register-browser.ru.md
   sha256: 17dbbcdedab1708467988dd3cf774edf4638000fb83116f839f79016f4ffec7c
+- id: slot:05-formalizations/LS.FORM.012-register-instruction.ru.md
+  path: PACK-rhetoric/pack/language-style/05-formalizations/LS.FORM.012-register-instruction.ru.md
+  sha256: 4bbde0e780ec92704860e484483a67228759bb67d7f9f48cfd90378e743cb826

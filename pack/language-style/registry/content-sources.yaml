@@ -10,6 +10,9 @@ L1.code-style: DS-my-strategy/memory/code-style-author.md
 # Контент-голос автора (frontstage) — владелец в мастерской бренда DS-Tseren-Brand/style/ (WP-335 Ф8; адрес исправлен РП-619 Ф2). Реестр ссылается, не копирует.
 L1.post-style: DS-Tseren-Brand/style/2.1-post.md
 L1.video-speech: DS-Tseren-Brand/style/video.md
+# Голос 0 и стиль 2.3 «Пошаговая инструкция» (РП-619 Ф5, Ф6) — тот же владелец, мастерская бренда.
+L1.voice: DS-Tseren-Brand/style/0-voice.md
+L1.instruction-style: DS-Tseren-Brand/style/2.3-instruction.md
 # Агент-агентный стиль (Ф8) — владелец в паке языковых стилей (граница поле↔стиль, §5).
 LS.agent-agent: PACK-rhetoric/pack/language-style/02-domain-entities/LS.D.003-agent-agent-style.md
 # Академический стиль руководства (Ф9) — владелец в паке стилей.

@@ -1,0 +1,9 @@
+# Авторское наложение L1: стиль 2.3 «Пошаговая инструкция», WP-619 Ф6.
+# content-bearing: указатель на владельца контента, компилятор его materialize (не render).
+# Жанр инструкции (мировые методы) — в overlays/genre/instruction.yaml; здесь авторская адаптация.
+# ИНВАРИАНТ (OwnerIntegrity): это УКАЗАТЕЛЬ на content_source, НЕ копия правил.
+overlay_class: author
+overlay_type: content
+content_source: L1.instruction-style   # DS-Tseren-Brand/style/2.3-instruction.md
+applies_to:
+  channel: [instruction]

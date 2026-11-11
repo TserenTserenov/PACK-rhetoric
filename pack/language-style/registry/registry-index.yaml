@@ -22,6 +22,8 @@ slots:
   - 05-formalizations/LS.FORM.009-register-guide-universal.ru.md
   - 05-formalizations/LS.FORM.010-register-telegram.ru.md
   - 05-formalizations/LS.FORM.011-register-browser.ru.md
+  # Пошаговая инструкция от имени автора (WP-619 Ф6).
+  - 05-formalizations/LS.FORM.012-register-instruction.ru.md
 
 # Кросс-осевые слои каскада (base → domain → market → genre → author → user). user — в рантайме.
 # Порядок классов здесь = порядок каскада. genre/author — content/data наложения по applies_to.
@@ -36,11 +38,15 @@ overlays:
     - overlays/genre/task-contract.yaml
     - overlays/genre/commit.yaml
     - overlays/genre/pr.yaml
+    - overlays/genre/instruction.yaml
   author:
     - overlays/author/conversational.yaml
     - overlays/author/code.yaml
+    # Голос 0 — перед формой канала (WP-619 Ф5).
+    - overlays/author/voice.yaml
     - overlays/author/video-speech.yaml
     - overlays/author/post-style.yaml
+    - overlays/author/instruction-style.yaml
 
 # Источники вне каскада, влияющие на систему стилей: только манифест/verify (freshness),
 # компиляция их не читает. Чтением presets владеет style_selector.py (PRESETS_PATH).

@@ -1,0 +1,11 @@
+# Авторское наложение L1: общий голос автора (голос 0), WP-619 Ф5.
+# content-bearing: указатель на владельца контента, компилятор его materialize (не render).
+# Голос общий для всех авторских каналов, поэтому наложение отдельное, а не внутри стиля канала:
+# иначе при 2.2 и 2.3 голос раздвоится (пир-сессия 2026-11-11-11, Claude+Kimi+Codex).
+# Порядок в registry-index: перед наложениями каналов (голос, затем форма канала).
+# ИНВАРИАНТ (OwnerIntegrity): это УКАЗАТЕЛЬ на content_source, НЕ копия правил.
+overlay_class: author
+overlay_type: content
+content_source: L1.voice   # DS-Tseren-Brand/style/0-voice.md
+applies_to:
+  channel: [post, video, instruction]
