@@ -75,11 +75,30 @@ class TestDispatcherChannelsClosed(unittest.TestCase):
         self.assertIn("ПЕРЕД НАЧАЛОМ", res.fragment)
         self.assertIn("2.3. Пошаговая инструкция", res.fragment)
 
-    def test_voice_and_instruction_do_not_leak_to_other_events(self):
-        for event in sorted(set(dispatcher.EVENT_KEYS) - {"post", "instruction"}):
-            refs = {r["source_id"] for r in dispatcher.dispatch(event, use_cache=False).source_refs}
-            self.assertNotIn("content:L1.voice", refs, event)
-            self.assertNotIn("content:L1.instruction-style", refs, event)
+    def test_empirical_profiles_require_their_author_event(self):
+        profiles = {
+            "practicum": ("LS.FORM.013", "# 1.2. Ведение практикума"),
+            "team-message": ("LS.FORM.014", "# 2.2. Рабочее сообщение команде"),
+        }
+        for event in dispatcher.EVENT_KEYS:
+            with self.subTest(event=event):
+                result = dispatcher.dispatch(event, use_cache=False)
+                refs = [ref["source_id"] for ref in result.source_refs]
+                for channel, (slot_id, title) in profiles.items():
+                    source = f"content:L1.{channel}"
+                    if event == channel:
+                        self.assertFalse(result.fallback_used)
+                        self.assertIn(f"slot:{slot_id}", refs)
+                        self.assertLess(refs.index("content:L1.voice"), refs.index(source))
+                        self.assertLess(result.fragment.index("0. Общий голос автора"),
+                                        result.fragment.index(title))
+                    else:
+                        self.assertNotIn(source, refs)
+
+                if event not in {"post", "instruction", *profiles}:
+                    self.assertNotIn("content:L1.voice", refs)
+                if event != "instruction":
+                    self.assertNotIn("content:L1.instruction-style", refs)
 
 
 class TestPersonalTierNoLeak(unittest.TestCase):

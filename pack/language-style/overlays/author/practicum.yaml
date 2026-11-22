@@ -1,0 +1,6 @@
+overlay_class: author
+overlay_type: content
+content_source: L1.practicum
+applies_to:
+  reader_role: [author]
+  channel: [practicum]

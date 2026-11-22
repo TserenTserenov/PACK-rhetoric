@@ -8,4 +8,4 @@ overlay_class: author
 overlay_type: content
 content_source: L1.voice   # DS-Tseren-Brand/style/0-voice.md
 applies_to:
-  channel: [post, video, instruction]
+  channel: [post, video, instruction, practicum, team-message]

@@ -33,6 +33,8 @@ EVENT_KEYS = {
     "post": {"reader_meta_class": "human", "reader_role": "author", "channel": "post"},
     # Step-by-step instruction written on the author's behalf; equals slot LS.FORM.012 (WP-619 F6).
     "instruction": {"reader_meta_class": "human", "reader_role": "author", "channel": "instruction"},
+    "practicum": {"reader_meta_class": "human", "reader_role": "author", "channel": "practicum"},
+    "team-message": {"reader_meta_class": "human", "reader_role": "author", "channel": "team-message"},
     # агент-читатель (Ф8): peer-сессия, передача дел, контракт задачи, коммит, PR
     "peer-turn": {"reader_meta_class": "agent", "reader_role": "peer", "channel": "transcript"},
     "handoff": {"reader_meta_class": "agent", "reader_role": "executor", "channel": "handoff"},
